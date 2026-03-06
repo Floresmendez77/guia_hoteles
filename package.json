@@ -1,0 +1,25 @@
+{
+  "name": "guia_hoteles",
+  "version": "1.0.0",
+  "description": "**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Floresmendez77/guia_hoteles.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Floresmendez77/guia_hoteles/issues"
+  },
+  "homepage": "https://github.com/Floresmendez77/guia_hoteles#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.7.1",
+    "popper.js": "^1.16.1"
+  }
+}
