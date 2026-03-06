@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Guía de Hoteles - PROASOL</title>
-    
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 </head>
-<body>
 
-    <div class="container mt-5">
-        <div class="jumbotron">
-            <h1 class="display-4">Guía de Hoteles</h1>
-            <p class="lead">Bienvenido Andrew. Este proyecto está usando Bootstrap 4 desde node_modules.</p>
-            <hr class="my-4">
-            <p>Si ves este recuadro gris con bordes redondeados, ¡Bootstrap está funcionando!</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Explorar Hoteles</a>
+<body>
+    <div class="container-fluid mt-5">
+        <h2 class="text-center mb-4">Nuestros Hoteles Disponibles (Vista Fluida)</h2>
+
+        <div class="row justify-content-center">
+
+            <div class="col-sm-12 col-md-4 border p-3 text-center">
+                <h3>Hotel San Pedro</h3>
+                <p>Ubicación: Tegucigalpa</p>
+                <button class="btn btn-info">Ver más</button>
+            </div>
+
+            <div class="col-sm-12 col-md-4 border p-3 text-center">
+                <h3>Hotel La Ceiba</h3>
+                <p>Ubicación: Atlántida</p>
+                <button class="btn btn-info">Ver más</button>
+            </div>
+
+            <div class="col-sm-12 col-md-4 border p-3 text-center">
+                <h3>Hotel Copán</h3>
+                <p>Ubicación: Copán Ruinas</p>
+                <button class="btn btn-info">Ver más</button>
+            </div>
+
         </div>
     </div>
 
@@ -23,4 +39,5 @@
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
+
 </html>
