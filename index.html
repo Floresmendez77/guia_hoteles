@@ -12,83 +12,124 @@
 
 <body>
 
-    <header class="jumbotron jumbotron-fluid bg-primary text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
         <div class="container">
-            <h1 class="display-4">Guía de Hoteles</h1>
-            <p class="lead">Encuentra los mejores lugares para descansar en Honduras.</p>
+            <a class="navbar-brand font-weight-bold" href="#">
+                <span class="text-primary">HND</span> Hoteles
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menuPrincipal">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a class="nav-link" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#caracteristicas">Características</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#hoteles">Nuestros Hoteles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="jumbotron jumbotron-fluid text-white d-flex align-items-center">
+        <div class="container text-center">
+            <h1 class="display-3 font-weight-bold">Guía de Hoteles</h1>
+            <p class="lead">Explora el confort y la calidez en cada rincón de Honduras.</p>
         </div>
     </header>
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-4">
-                <h3>Calidad</h3>
-                <p>Hoteles certificados para garantizar tu máxima comodidad durante la estadía.</p>
-            </div>
-            <div class="col-md-4">
-                <h3>Ubicación</h3>
-                <p>Puntos estratégicos cerca de los centros turísticos y de negocios más importantes.</p>
-            </div>
-            <div class="col-md-4">
-                <h3>Precio</h3>
-                <p>Opciones accesibles y variadas que se ajustan a todos los presupuestos.</p>
-            </div>
-        </div>
+    <div class="container mt-n5">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb shadow-sm">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Guía de Hoteles</li>
+            </ol>
+        </nav>
 
-        <hr class="my-5">
-
-        <h2 class="mb-4">Nuestros Hoteles</h2>
-        <div class="row d-flex align-items-stretch"> <div class="col-sm-4 card-hotel d-flex flex-column justify-content-between p-3 border">
-                <div>
-                    <h3>Hotel San Pedro</h3>
-                    <p>Ubicado en el corazón de Tegucigalpa, ideal para viajes de negocios.</p>
+        <section id="caracteristicas" class="py-5">
+            <div class="row text-center">
+                <div class="col-md-4 mb-4">
+                    <div class="p-3">
+                        <h4 class="text-primary">Calidad</h4>
+                        <p class="text-muted">Hoteles certificados para garantizar tu máxima comodidad durante la estadía.</p>
+                    </div>
                 </div>
-                <button class="btn btn-primary mt-2">Reservar</button>
-            </div>
-
-            <div class="col-sm-4 card-hotel d-flex flex-column justify-content-between p-3 border">
-                <div>
-                    <h3>Posada del Sol</h3>
-                    <p>Un ambiente relajante frente a las costas del Caribe.</p>
+                <div class="col-md-4 mb-4">
+                    <div class="p-3">
+                        <h4 class="text-primary">Ubicación</h4>
+                        <p class="text-muted">Puntos estratégicos cerca de los centros turísticos y de negocios.</p>
+                    </div>
                 </div>
-                <button class="btn btn-primary mt-2">Reservar</button>
-            </div>
-
-            <div class="col-sm-4 card-hotel d-flex flex-column justify-content-between p-3 border">
-                <div>
-                    <h3>Eco-Hotel Montaña</h3>
-                    <p>Conecta con la naturaleza en las zonas más verdes del país.</p>
+                <div class="col-md-4 mb-4">
+                    <div class="p-3">
+                        <h4 class="text-primary">Precio</h4>
+                        <p class="text-muted">Opciones variadas que se ajustan a todos los presupuestos y necesidades.</p>
+                    </div>
                 </div>
-                <button class="btn btn-primary mt-2">Reservar</button>
             </div>
+        </section>
 
-        </div>
+        <hr class="my-4">
+
+        <section id="hoteles" class="py-4">
+            <h2 class="mb-5 text-center">Destinos Destacados</h2>
+            <div class="row d-flex align-items-stretch"> 
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-hotel h-100 d-flex flex-column justify-content-between p-4 shadow-sm border">
+                        <div>
+                            <h3 class="h4">Hotel San Pedro</h3>
+                            <p class="text-secondary">Ubicado en el corazón de Tegucigalpa, perfecto para ejecutivos.</p>
+                        </div>
+                        <button class="btn btn-outline-primary btn-block mt-3">Ver Detalles</button>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-hotel h-100 d-flex flex-column justify-content-between p-4 shadow-sm border">
+                        <div>
+                            <h3 class="h4">Posada del Sol</h3>
+                            <p class="text-secondary">Disfruta de la brisa marina y el mejor servicio en las costas de Roatán.</p>
+                        </div>
+                        <button class="btn btn-outline-primary btn-block mt-3">Ver Detalles</button>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-hotel h-100 d-flex flex-column justify-content-between p-4 shadow-sm border">
+                        <div>
+                            <h3 class="h4">Eco-Hotel Montaña</h3>
+                            <p class="text-secondary">Sostenibilidad y lujo en medio de la naturaleza del Lago de Yojoa.</p>
+                        </div>
+                        <button class="btn btn-outline-primary btn-block mt-3">Ver Detalles</button>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <footer class="footer mt-5 py-4 bg-light border-top">
+    <footer id="contacto" class="footer mt-5 py-5 bg-dark text-light">
         <div class="container">
             <div class="row">
-                <div class="col-4 text-left">
-                    <h5>Contacto</h5>
-                    <address>
-                        <strong>Guía de Hoteles HN</strong><br>
-                        Av. Juan Pablo II, Tegucigalpa<br>
-                        Honduras<br>
-                        <abbr title="Teléfono">Tel:</abbr> +504 2222-0000
+                <div class="col-md-4 text-left mb-4">
+                    <h5 class="text-primary text-uppercase mb-3">Dirección</h5>
+                    <address class="pl-3 border-left">
+                        <strong>Oficinas Centrales</strong><br>
+                        Col. Lomas del Guijarro<br>
+                        Tegucigalpa, Honduras<br>
+                        <abbr title="Teléfono" class="text-info">Telefono:</abbr> (504) 2222-0000
                     </address>
                 </div>
-                <div class="col-4 text-center">
-                    <h5>Redes Sociales</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">Twitter</a></li>
-                    </ul>
+                <div class="col-md-4 text-center mb-4">
+                    <h5 class="text-primary text-uppercase mb-3">Síguenos</h5>
+                    <div class="d-flex justify-content-around">
+                        <a href="#" class="text-white">Facebook</a>
+                        <a href="#" class="text-white">Instagram</a>
+                        <a href="#" class="text-white">LinkedIn</a>
+                    </div>
                 </div>
-                <div class="col-4 text-right">
-                    <h5>Información</h5>
-                    <p>© 2026 Honduras Travel. Todos los derechos reservados.</p>
-                    <small>Desarrollado para el Módulo 1</small>
+                <div class="col-md-4 text-right mb-4">
+                    <h5 class="text-primary text-uppercase mb-3">Newsletter</h5>
+                    <p class="small text-muted">Suscríbete para recibir ofertas exclusivas de temporada.</p>
+                    <p>© 2026 Guía de Hoteles Honduras.</p>
                 </div>
             </div>
         </div>
