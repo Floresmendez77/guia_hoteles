@@ -4,48 +4,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Guía de Hoteles - PROASOL</title>
+    <title>Guía de Hoteles - Honduras</title>
+    
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <div class="container-fluid mt-5">
-        <h2 class="text-center mb-4">Explora Hoteles en Honduras</h2>
 
-        <div class="d-flex flex-wrap justify-content-around">
+    <header class="jumbotron jumbotron-fluid bg-primary text-white">
+        <div class="container">
+            <h1 class="display-4">Guía de Hoteles</h1>
+            <p class="lead">Encuentra los mejores lugares para descansar en Honduras.</p>
+        </div>
+    </header>
 
-            <div class="card m-2" style="width: 18rem; border: 2px solid #17a2b8;">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h5 class="card-title">San Pedro</h5>
-                        <span class="badge badge-success">Disponible</span>
-                    </div>
-                    <p class="card-text">Tegucigalpa, Francisco Morazán.</p>
-                    <a href="#" class="btn btn-primary btn-block">Reservar</a>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Calidad</h3>
+                <p>Hoteles certificados para garantizar tu máxima comodidad durante la estadía.</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Ubicación</h3>
+                <p>Puntos estratégicos cerca de los centros turísticos y de negocios más importantes.</p>
+            </div>
+            <div class="col-md-4">
+                <h3>Precio</h3>
+                <p>Opciones accesibles y variadas que se ajustan a todos los presupuestos.</p>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <h2 class="mb-4">Nuestros Hoteles</h2>
+        <div class="row d-flex align-items-stretch"> <div class="col-sm-4 card-hotel d-flex flex-column justify-content-between p-3 border">
+                <div>
+                    <h3>Hotel San Pedro</h3>
+                    <p>Ubicado en el corazón de Tegucigalpa, ideal para viajes de negocios.</p>
                 </div>
+                <button class="btn btn-primary mt-2">Reservar</button>
+            </div>
+
+            <div class="col-sm-4 card-hotel d-flex flex-column justify-content-between p-3 border">
+                <div>
+                    <h3>Posada del Sol</h3>
+                    <p>Un ambiente relajante frente a las costas del Caribe.</p>
+                </div>
+                <button class="btn btn-primary mt-2">Reservar</button>
+            </div>
+
+            <div class="col-sm-4 card-hotel d-flex flex-column justify-content-between p-3 border">
+                <div>
+                    <h3>Eco-Hotel Montaña</h3>
+                    <p>Conecta con la naturaleza en las zonas más verdes del país.</p>
+                </div>
+                <button class="btn btn-primary mt-2">Reservar</button>
             </div>
 
         </div>
     </div>
 
-    <footer class="bg-dark text-white mt-5 p-4">
+    <footer class="footer mt-5 py-4 bg-light border-top">
         <div class="container">
-            <div class="d-flex justify-content-between flex-wrap">
-                <div>
-                    <h5>Contacto PROASOL</h5>
-                    <p>Email: andrew.flores@proasol.gob.hn</p>
+            <div class="row">
+                <div class="col-4 text-left">
+                    <h5>Contacto</h5>
+                    <address>
+                        <strong>Guía de Hoteles HN</strong><br>
+                        Av. Juan Pablo II, Tegucigalpa<br>
+                        Honduras<br>
+                        <abbr title="Teléfono">Tel:</abbr> +504 2222-0000
+                    </address>
                 </div>
-                <div>
-                    <h5>Síguenos</h5>
-                    <a href="#" class="text-white mr-3">Facebook</a>
-                    <a href="#" class="text-white">Instagram</a>
+                <div class="col-4 text-center">
+                    <h5>Redes Sociales</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+                <div class="col-4 text-right">
+                    <h5>Información</h5>
+                    <p>© 2026 Honduras Travel. Todos los derechos reservados.</p>
+                    <small>Desarrollado para el Módulo 1</small>
                 </div>
             </div>
-            <hr class="bg-white">
-            <p class="text-center">© 2026 Guía de Hoteles - Andrew Estheven Flores Mendez</p>
         </div>
     </footer>
 
-</body>
+    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
+</body>
 </html>
