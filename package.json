@@ -4,9 +4,9 @@
   "description": "**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**",
   "main": "index.js",
   "scripts": {
-  "start": "lite-server",
-  "test": "echo \"Error: no test specified\" && exit 1"
-},
+    "start": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Floresmendez77/guia_hoteles.git"
@@ -21,6 +21,7 @@
   "dependencies": {
     "bootstrap": "^4.0.0",
     "jquery": "^3.7.1",
+    "open-iconic": "^1.1.1",
     "popper.js": "^1.16.1"
   },
   "devDependencies": {
