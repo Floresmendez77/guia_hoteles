@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>HND Hoteles | Guía Profesional</title>
+    <title>HND Hoteles | Guía Profesional Premium</title>
     
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/open-iconic/font/css/open-iconic-bootstrap.min.css">
@@ -13,7 +13,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
         <div class="container">
             <a class="navbar-brand font-weight-bold" href="#">
                 <span class="text-primary">HND</span> Hoteles
@@ -24,7 +24,7 @@
 
             <div class="collapse navbar-collapse" id="menuPrincipal">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link" href="#"><span class="oi oi-home mr-1"></span>Inicio</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="#">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#hoteles">Hoteles</a></li>
                     <li class="nav-item"><a class="nav-link" href="#precios">Precios</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
@@ -35,54 +35,57 @@
 
     <header class="jumbotron jumbotron-fluid text-white d-flex align-items-center">
         <div class="container text-center">
-            <h1 class="display-3 font-weight-bold">Descubre Honduras</h1>
-            <p class="lead">Comodidad, aventura y los mejores precios en un solo lugar.</p>
+            <h1 class="display-3 font-weight-bold">Honduras Te Espera</h1>
+            <p class="lead">Explora destinos increíbles con imágenes reales y precios actualizados.</p>
         </div>
     </header>
 
     <div class="container mt-n5">
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb shadow-sm border-0">
+            <ol class="breadcrumb shadow border-0">
                 <li class="breadcrumb-item"><a href="#">Inicio</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Guía de Hoteles</li>
             </ol>
         </nav>
 
         <section id="hoteles" class="py-5">
-            <h2 class="text-center mb-5 font-weight-bold">Destinos Destacados</h2>
+            <h2 class="text-center mb-5 font-weight-bold">Nuestros Hoteles</h2>
             <div class="row"> 
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card-hotel h-100 p-4 shadow-sm border">
-                        <h3 class="h4">Hotel San Pedro</h3>
-                        <p class="text-secondary small">Elegancia y confort en el centro financiero.</p>
-                        <button class="btn btn-primary btn-block mt-auto" data-toggle="modal" data-target="#modalReserva">
-                            <span class="oi oi-magnifying-glass mr-2"></span>Ver Detalles
-                        </button>
+                    <div class="card card-hotel h-100 shadow-sm border-0">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Hotel San Pedro">
+                        <div class="card-body">
+                            <h3 class="h5 font-weight-bold">Hotel San Pedro</h3>
+                            <p class="text-muted small">Elegancia urbana con instalaciones de primera clase.</p>
+                            <button class="btn btn-primary btn-block mt-auto" data-toggle="modal" data-target="#modalReserva">Ver Detalles</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card-hotel h-100 p-4 shadow-sm border">
-                        <h3 class="h4">Posada del Sol</h3>
-                        <p class="text-secondary small">Tu refugio frente a las playas de Roatán.</p>
-                        <button class="btn btn-primary btn-block mt-auto" data-toggle="modal" data-target="#modalReserva">
-                            <span class="oi oi-magnifying-glass mr-2"></span>Ver Detalles
-                        </button>
+                    <div class="card card-hotel h-100 shadow-sm border-0">
+                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=500&q=80" class="card-img-top" alt="Posada del Sol">
+                        <div class="card-body">
+                            <h3 class="h5 font-weight-bold">Posada del Sol</h3>
+                            <p class="text-muted small">Disfruta del paraíso tropical frente al mar cristalino.</p>
+                            <button class="btn btn-primary btn-block mt-auto" data-toggle="modal" data-target="#modalReserva">Ver Detalles</button>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card-hotel h-100 p-4 shadow-sm border">
-                        <h3 class="h4">Eco-Hotel Lago</h3>
-                        <p class="text-secondary small">Naturaleza pura en el Lago de Yojoa.</p>
-                        <button class="btn btn-primary btn-block mt-auto" data-toggle="modal" data-target="#modalReserva">
-                            <span class="oi oi-magnifying-glass mr-2"></span>Ver Detalles
-                        </button>
+                    <div class="card card-hotel h-100 shadow-sm border-0">
+                        <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?q=80&w=500&auto=format&fit=crop" class="card-img-top" alt="Eco-Hotel">
+                        <div class="card-body">
+                            <h3 class="h5 font-weight-bold">Eco-Hotel Lago</h3>
+                            <p class="text-muted small">Conexión total con la naturaleza y el aire puro.</p>
+                            <button class="btn btn-primary btn-block mt-auto" data-toggle="modal" data-target="#modalReserva">Ver Detalles</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="precios" class="py-5">
-            <h2 class="text-center mb-4 font-weight-bold text-primary">Tarifas por Ciudad</h2>
+            <h2 class="text-center mb-4 font-weight-bold text-primary">Tarifas de Referencia</h2>
             <div class="table-responsive shadow-sm rounded-lg">
                 <table class="table table-striped table-hover mb-0">
                     <thead class="thead-dark">
@@ -103,16 +106,16 @@
         </section>
 
         <section class="py-5">
-            <h2 class="text-center mb-5 font-weight-bold">Experiencias Honduras</h2>
             <div class="card-columns">
-                <div class="card border-0 shadow-sm mb-4">
+                <div class="card border-0 shadow-sm">
                     <img src="https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=500&q=60" class="card-img-top">
-                    <div class="card-body p-3"><p class="mb-0 font-weight-bold">Islas de la Bahía</p></div>
                 </div>
-                <div class="card bg-primary text-white p-4 border-0 shadow-sm mb-4">
-                    <p class="mb-0 font-italic">"El mejor viaje de mi vida, la guía fue excelente."</p>
+                <div class="card bg-primary text-white p-4 border-0 shadow-sm">
+                    <blockquote class="blockquote mb-0">
+                        <p class="small">"La mejor experiencia visual de Honduras."</p>
+                    </blockquote>
                 </div>
-                <div class="card border-0 shadow-sm mb-4">
+                <div class="card border-0 shadow-sm">
                     <img src="https://images.unsplash.com/photo-1583037189850-1921ae7c6c22?auto=format&fit=crop&w=500&q=60" class="card-img-top">
                 </div>
             </div>
@@ -121,24 +124,24 @@
         <section id="contacto" class="py-5">
             <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-8">
-                    <div class="bg-white p-4 p-md-5 shadow rounded-xl border-0">
-                        <h2 class="text-center mb-4 font-weight-bold text-dark">Contáctanos</h2>
+                    <div class="bg-white p-5 shadow-lg rounded-xl border-0">
+                        <h2 class="text-center mb-4 font-weight-bold">Contáctanos</h2>
                         <form>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label class="small font-weight-bold">Nombre</label>
+                                    <label class="small font-weight-bold text-uppercase">Nombre</label>
                                     <input type="text" class="form-control custom-input" placeholder="Tu nombre">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label class="small font-weight-bold">Email</label>
+                                    <label class="small font-weight-bold text-uppercase">Email</label>
                                     <input type="email" class="form-control custom-input" placeholder="correo@ejemplo.hn">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="small font-weight-bold">Mensaje</label>
-                                <textarea class="form-control custom-input" rows="4" placeholder="¿Cómo podemos ayudarte?"></textarea>
+                                <label class="small font-weight-bold text-uppercase">Mensaje</label>
+                                <textarea class="form-control custom-input" rows="4" placeholder="¿En qué podemos ayudarte?"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block py-3 font-weight-bold shadow-sm mt-3">ENVIAR MENSAJE</button>
+                            <button type="submit" class="btn btn-primary btn-block py-3 font-weight-bold mt-3 shadow">ENVIAR CONSULTA</button>
                         </form>
                     </div>
                 </div>
@@ -150,24 +153,24 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content rounded-xl border-0 shadow-lg">
                 <div class="modal-header border-0">
-                    <h5 class="modal-title font-weight-bold">Configura tu Estancia</h5>
+                    <h5 class="modal-title font-weight-bold">Reserva tu Estancia</h5>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body p-4">
                     <form>
                         <div class="booking-box border rounded mb-4">
                             <div class="row no-gutters border-bottom">
-                                <div class="col-6 border-right p-3">
+                                <div class="col-6 border-right p-3 text-center">
                                     <label class="mini-label">LLEGADA</label>
                                     <input type="date" class="form-control border-0 p-0 h-auto shadow-none">
                                 </div>
-                                <div class="col-6 p-3">
+                                <div class="col-6 p-3 text-center">
                                     <label class="mini-label">SALIDA</label>
                                     <input type="date" class="form-control border-0 p-0 h-auto shadow-none">
                                 </div>
                             </div>
                             <div class="p-3">
-                                <label class="mini-label">HUÉSPEDES</label>
+                                <label class="mini-label text-center d-block">HUÉSPEDES</label>
                                 <select class="form-control border-0 p-0 h-auto shadow-none">
                                     <option>1 huésped</option>
                                     <option>2 huéspedes</option>
@@ -175,7 +178,7 @@
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block py-3 rounded-pill font-weight-bold">RESERVAR AHORA</button>
+                        <button type="submit" class="btn btn-primary btn-block py-3 rounded-pill font-weight-bold shadow">RESERVAR AHORA</button>
                     </form>
                 </div>
             </div>
@@ -184,7 +187,7 @@
 
     <footer class="bg-dark text-white py-5 mt-5">
         <div class="container text-center text-muted">
-            <p class="small mb-0">© 2026 HND Hoteles Honduras. Proyecto Educativo Bootstrap 4.</p>
+            <p class="small mb-0">© 2026 HND Hoteles Honduras. Diseño Responsivo con Bootstrap 4.</p>
         </div>
     </footer>
 

@@ -3,29 +3,23 @@
     --primary-dark: #0056b3;
     --dark: #1e272e;
     --bg-light: #f8fbfd;
-    --text: #2d3436;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
     padding-top: 56px;
-    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
     background-color: var(--bg-light);
-    color: var(--text);
-    line-height: 1.6;
-    scroll-behavior: smooth;
+    color: #2d3436;
 }
 
-/* NAVBAR */
 .navbar {
     backdrop-filter: blur(10px);
     background-color: rgba(30, 39, 46, 0.95) !important;
     border-bottom: 2px solid var(--primary);
 }
 
-.navbar-brand { letter-spacing: -1px; }
 
-/* JUMBOTRON */
 .jumbotron {
     background: linear-gradient(135deg, rgba(0, 123, 255, 0.8) 0%, rgba(0, 41, 85, 0.9) 100%), 
                 url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80');
@@ -35,19 +29,16 @@ body {
     clip-path: ellipse(150% 100% at 50% 0%);
 }
 
-/* BREADCRUMBS */
 .breadcrumb {
     background: #fff;
     margin-top: -50px;
     border-radius: 12px;
     padding: 1rem 2rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-/* CARDS */
 .card-hotel {
-    background: #fff;
     border-radius: 20px;
+    overflow: hidden;
     transition: var(--transition);
 }
 
@@ -56,31 +47,31 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important;
 }
 
-/* TABLA */
+.card-img-top {
+    height: 220px;
+    object-fit: cover; 
+    transition: var(--transition);
+}
+
+.card-hotel:hover .card-img-top {
+    transform: scale(1.05);
+}
+
 .table-responsive { border-radius: 12px; }
 .thead-dark th {
     background-color: var(--dark);
     border: none;
-    font-size: 0.85rem;
     text-transform: uppercase;
+    font-size: 0.8rem;
     letter-spacing: 1px;
 }
 
-/* MASONRY */
-.card-columns .card {
-    border-radius: 15px;
-    overflow: hidden;
-    transition: var(--transition);
-}
-.card-columns .card:hover { transform: scale(1.02); }
 
-/* FORMULARIOS */
 .custom-input {
     background-color: #f1f5f9;
     border: 2px solid transparent;
     border-radius: 10px;
     padding: 0.8rem 1rem;
-    height: auto;
     transition: var(--transition);
 }
 
@@ -90,18 +81,18 @@ body {
     box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
 }
 
-/* MODAL RESERVA */
+
+.rounded-xl { border-radius: 20px !important; }
 .booking-box { border: 2px solid #e2e8f0; overflow: hidden; }
 .mini-label {
     display: block;
     font-size: 10px;
     font-weight: 800;
     color: var(--primary);
-    margin-bottom: 2px;
+    letter-spacing: 0.5px;
 }
-.rounded-xl { border-radius: 20px !important; }
 
-/* BOTONES */
+
 .btn-primary {
     background: var(--primary);
     border: none;
@@ -112,5 +103,12 @@ body {
 .btn-primary:hover {
     background: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.2);
+    box-shadow: 0 8px 15px rgba(0, 123, 255, 0.2);
+}
+
+
+.card-columns .card {
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
 }
