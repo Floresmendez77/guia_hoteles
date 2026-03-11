@@ -1,415 +1,1050 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>HND Hoteles | Luxury & Comfort Honduras</title>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="node_modules/open-iconic/font/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HND LUXE | Hoteles Premium Honduras</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
+<body>
 
-<body data-spy="scroll" data-target="#navPrincipal" data-offset="100">
+<!-- ══════════════════════════════════════════
+     TOAST NOTIFICATION
+══════════════════════════════════════════ -->
+<div id="toast" class="toast" role="alert">
+  <div class="toast-icon">✓</div>
+  <div class="toast-body">
+    <strong id="toast-title">Reserva enviada</strong>
+    <span id="toast-msg">Te contactaremos en breve.</span>
+  </div>
+  <button class="toast-close" onclick="closeToast()">×</button>
+</div>
 
-    <div class="container-fluid p-0 fixed-top" style="z-index: 1100;">
-        <div class="alert alert-primary alert-dismissible fade show mb-0 rounded-0 border-0 text-center py-2 shadow"
-            role="alert">
-            <span class="badge badge-pill badge-light mr-2">OFERTA</span>
-            ¡Reserva con el código <strong>HND2026</strong> y obtén un 20% de descuento adicional!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+<!-- ══════════════════════════════════════════
+     PROMO BAR
+══════════════════════════════════════════ -->
+<div class="promo-bar" id="promoBar">
+  <div class="promo-inner">
+    <span class="promo-badge">OFERTA 2026</span>
+    <p>Usa el código <code>HND2026</code> y obtén <strong>20% OFF</strong> en tu primera estancia.</p>
+    <a href="#hoteles" class="promo-cta">Ver destinos →</a>
+  </div>
+  <button class="promo-close" onclick="document.getElementById('promoBar').style.display='none'" aria-label="Cerrar">×</button>
+</div>
+
+<!-- ══════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#" class="nav-brand">
+      <span class="brand-hnd">HND</span><span class="brand-luxe">LUXE</span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+      <li><a href="#hoteles" class="nav-link">Destinos</a></li>
+      <li><a href="#servicios" class="nav-link">Servicios</a></li>
+      <li><a href="#precios" class="nav-link">Tarifas</a></li>
+      <li><a href="#faq" class="nav-link">FAQ</a></li>
+    </ul>
+
+    <a href="#contacto" class="btn-reservar">Reservar ahora</a>
+
+    <button class="nav-hamburger" id="navToggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero" id="inicio">
+  <div class="hero-bg">
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Honduras · Centroamérica</span>
+    <h1 class="hero-title">
+      Experiencias que<br>
+      <em>trascienden</em> lo ordinario
+    </h1>
+    <p class="hero-sub">
+      Tres destinos únicos. Un estándar de lujo sin igual.<br>
+      Desde el Caribe hasta el corazón Maya.
+    </p>
+    <div class="hero-actions">
+      <a href="#hoteles" class="btn-primary-hero">Explorar destinos</a>
+      <a href="#precios" class="btn-ghost-hero">Ver tarifas</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>3</strong><span>Destinos</span></div>
+      <div class="stat-div"></div>
+      <div class="stat"><strong>4.9★</strong><span>Calificación</span></div>
+      <div class="stat-div"></div>
+      <div class="stat"><strong>10k+</strong><span>Huéspedes</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Descubre</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     HOTELES
+══════════════════════════════════════════ -->
+<section class="section" id="hoteles">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Nuestros Destinos</span>
+      <h2 class="section-title">Elige tu <em>escapada</em></h2>
+      <p class="section-sub">Cada propiedad diseñada para una experiencia completamente distinta.</p>
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-lg" id="navPrincipal">
-        <div class="container">
-            <a class="navbar-brand font-weight-bold" href="#">
-                <span class="text-primary">HND</span> HOTELES
+    <div class="hotels-grid">
+
+      <!-- Hotel 1: Executive Sula -->
+      <article class="hotel-card" data-hotel="sula">
+        <div class="hotel-img-wrap">
+          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=900&q=80" alt="Executive Sula" loading="lazy">
+          <div class="hotel-img-overlay">
+            <span class="hotel-badge">Negocios</span>
+          </div>
+          <div class="hotel-price-tag">
+            <span class="price-from">desde</span>
+            <span class="price-amount">$85</span>
+            <span class="price-unit">/noche</span>
+          </div>
+        </div>
+        <div class="hotel-body">
+          <div class="hotel-meta">
+            <div class="hotel-location">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              San Pedro Sula
+            </div>
+            <div class="hotel-stars">
+              <span class="stars-icon">★★★★★</span>
+              <span class="stars-score">4.8</span>
+            </div>
+          </div>
+          <h3 class="hotel-name">Executive Sula</h3>
+          <p class="hotel-desc">El corazón financiero de Honduras a tus pies. Perfecto para viajeros de negocios que no renuncian al confort premium.</p>
+          <div class="hotel-amenities">
+            <span class="amenity">WiFi 6</span>
+            <span class="amenity">Spa</span>
+            <span class="amenity">Rooftop</span>
+            <span class="amenity">Gym 24h</span>
+          </div>
+          <button class="btn-hotel-cta" onclick="openModal('sula')">
+            Ver detalles y reservar
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <!-- Hotel 2: Coral Reef Roatán (destacado) -->
+      <article class="hotel-card hotel-featured" data-hotel="roatan">
+        <div class="hotel-featured-badge">⭐ Más elegido</div>
+        <div class="hotel-img-wrap">
+          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=900&q=80" alt="Coral Reef Roatán" loading="lazy">
+          <div class="hotel-img-overlay">
+            <span class="hotel-badge hotel-badge-gold">Playa & Luxe</span>
+          </div>
+          <div class="hotel-price-tag hotel-price-gold">
+            <span class="price-from">desde</span>
+            <span class="price-amount">$145</span>
+            <span class="price-unit">/noche</span>
+          </div>
+        </div>
+        <div class="hotel-body">
+          <div class="hotel-meta">
+            <div class="hotel-location">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Roatán, Islas de la Bahía
+            </div>
+            <div class="hotel-stars">
+              <span class="stars-icon stars-gold">★★★★★</span>
+              <span class="stars-score">5.0</span>
+            </div>
+          </div>
+          <h3 class="hotel-name">Coral Reef Roatán</h3>
+          <p class="hotel-desc">Acceso privado a la segunda barrera de coral más grande del mundo. Suites frente al mar con vista al Caribe hondureño.</p>
+          <div class="hotel-amenities">
+            <span class="amenity">Playa Privada</span>
+            <span class="amenity">Snorkeling</span>
+            <span class="amenity">Bar en el Mar</span>
+            <span class="amenity">Spa</span>
+          </div>
+          <button class="btn-hotel-cta btn-hotel-gold" onclick="openModal('roatan')">
+            Ver detalles y reservar
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </article>
+
+      <!-- Hotel 3: Ruinas Heritage -->
+      <article class="hotel-card" data-hotel="copan">
+        <div class="hotel-img-wrap">
+          <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=900&q=80" alt="Ruinas Heritage Copán" loading="lazy">
+          <div class="hotel-img-overlay">
+            <span class="hotel-badge">Historia & Cultura</span>
+          </div>
+          <div class="hotel-price-tag">
+            <span class="price-from">desde</span>
+            <span class="price-amount">$60</span>
+            <span class="price-unit">/noche</span>
+          </div>
+        </div>
+        <div class="hotel-body">
+          <div class="hotel-meta">
+            <div class="hotel-location">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Copán Ruinas
+            </div>
+            <div class="hotel-stars">
+              <span class="stars-icon">★★★★★</span>
+              <span class="stars-score">4.7</span>
+            </div>
+          </div>
+          <h3 class="hotel-name">Ruinas Heritage</h3>
+          <p class="hotel-desc">Elegancia colonial a pasos del legado Maya. Arquitectura auténtica del siglo XVIII restaurada con materiales locales.</p>
+          <div class="hotel-amenities">
+            <span class="amenity">Patio Colonial</span>
+            <span class="amenity">Tours Maya</span>
+            <span class="amenity">Restaurante</span>
+            <span class="amenity">WiFi</span>
+          </div>
+          <button class="btn-hotel-cta" onclick="openModal('copan')">
+            Ver detalles y reservar
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SERVICIOS
+══════════════════════════════════════════ -->
+<section class="section section-dark" id="servicios">
+  <div class="container">
+    <div class="section-header section-header-light">
+      <span class="section-tag section-tag-gold">Experiencia HND</span>
+      <h2 class="section-title" style="color:#fff;">Servicios <em>Premium</em></h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.6);">Porque los detalles hacen la diferencia.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><path d="M1.05 12a11 11 0 0 0 21.9 0M1.05 12a11 11 0 0 1 21.9 0M1.05 12H23M12 1a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h4>Ultra WiFi 6E</h4>
+        <p>Conectividad simétrica de 10Gbps en cada habitación y área común.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h4>Safe & Secure</h4>
+        <p>Seguridad biométrica, vigilancia privada 24/7 y protocolos de clase mundial.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h4>Wellness & Spa</h4>
+        <p>Rituales de relajación con productos 100% naturales de Honduras.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h4>Elite Concierge</h4>
+        <p>Tu asistente personal disponible las 24 horas para cualquier solicitud.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h5l2 3v4h-7V8zM5.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM18.5 21a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg>
+        </div>
+        <h4>Traslado Privado</h4>
+        <p>Vehículos de lujo para pick-up en aeropuertos y terminales.</p>
+      </div>
+      <div class="service-item">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        </div>
+        <h4>Gastronomía Local</h4>
+        <p>Restaurantes con cocina hondureña de autor, ingredientes de productores locales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PRECIOS
+══════════════════════════════════════════ -->
+<section class="section" id="precios">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Planes y Tarifas</span>
+      <h2 class="section-title">Elige tu <em>plan</em></h2>
+      <p class="section-sub">Precios por noche por persona. Incluye todos los impuestos.</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <div class="pricing-card">
+        <div class="pricing-header">
+          <span class="plan-name">Essential</span>
+          <div class="plan-price"><span>$85</span><small>/noche</small></div>
+          <p class="plan-desc">Ideal para viajes de negocios cortos</p>
+        </div>
+        <ul class="plan-features">
+          <li class="feat-yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Desayuno buffet incluido</li>
+          <li class="feat-yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Acceso a gimnasio 24/7</li>
+          <li class="feat-yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> WiFi de alta velocidad</li>
+          <li class="feat-no"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Acceso VIP Lounge</li>
+          <li class="feat-no"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Traslado aeropuerto</li>
+        </ul>
+        <a href="#contacto" class="btn-plan-outline">Seleccionar plan</a>
+      </div>
+
+      <div class="pricing-card pricing-featured">
+        <div class="pricing-ribbon">Recomendado</div>
+        <div class="pricing-header">
+          <span class="plan-name" style="color:#c9a96e;">Executive Plus</span>
+          <div class="plan-price"><span>$145</span><small>/noche</small></div>
+          <p class="plan-desc" style="color:rgba(255,255,255,0.6);">La experiencia completa HND</p>
+        </div>
+        <ul class="plan-features plan-features-light">
+          <li class="feat-yes feat-gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Todo lo del plan Essential</li>
+          <li class="feat-yes feat-gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Acceso VIP Lounge & Snacks</li>
+          <li class="feat-yes feat-gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Traslado privado incluido</li>
+          <li class="feat-yes feat-gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Late check-out 4:00 PM</li>
+          <li class="feat-yes feat-gold"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Concierge personal 24h</li>
+        </ul>
+        <a href="#contacto" class="btn-plan-gold">Reservar ahora</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-header">
+          <span class="plan-name">Ultra Luxe</span>
+          <div class="plan-price"><span>$210</span><small>/noche</small></div>
+          <p class="plan-desc">Para quien merece todo</p>
+        </div>
+        <ul class="plan-features">
+          <li class="feat-yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Todo lo del plan Executive</li>
+          <li class="feat-yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Masaje bienvenida 60 min</li>
+          <li class="feat-yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Cena privada frente al mar</li>
+          <li class="feat-yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Mayordomo personal 24h</li>
+          <li class="feat-yes"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Habitación suite garantizada</li>
+        </ul>
+        <a href="#contacto" class="btn-plan-outline">Solicitar exclusividad</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════ -->
+<section class="section section-alt" id="faq">
+  <div class="container container-narrow">
+    <div class="section-header">
+      <span class="section-tag">Soporte</span>
+      <h2 class="section-title">Preguntas <em>frecuentes</em></h2>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary class="faq-question">
+          <span>¿Cuál es la política de cancelación?</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>Ofrecemos cancelación gratuita hasta <strong>48 horas antes</strong> de tu llegada. Para modificaciones después de ese plazo, se aplica un cargo del 50% de la reserva total. Las reservas del plan Ultra Luxe tienen política de cancelación extendida de 72 horas.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">
+          <span>¿Qué métodos de pago aceptan?</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>Aceptamos Visa, Mastercard, American Express, transferencias bancarias y pagos digitales (PayPal, Stripe). Todos los pagos están protegidos con encriptación bancaria SSL de 256 bits.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">
+          <span>¿Cuáles son los horarios de check-in y check-out?</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>Check-in estándar: <strong>3:00 PM</strong>. Check-out: <strong>12:00 PM</strong>. Los planes Executive Plus y Ultra Luxe incluyen late check-out hasta las 4:00 PM. Early check-in disponible desde las 10:00 AM sujeto a disponibilidad.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">
+          <span>¿Tienen servicio para grupos o eventos corporativos?</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>Sí, ofrecemos paquetes especiales para grupos de 10+ personas y eventos corporativos. Incluye salas de reunión equipadas, catering personalizado y coordinador de eventos dedicado. Contáctanos directamente para cotizaciones grupales.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">
+          <span>¿Se permiten mascotas en los hoteles?</span>
+          <svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="faq-answer">
+          <p>El Ruinas Heritage acepta mascotas de hasta 15kg con cargo adicional de $25/noche. El Executive Sula y Coral Reef Roatán tienen política libre de mascotas para preservar la tranquilidad de todos los huéspedes.</p>
+        </div>
+      </details>
+    </div>
+
+    <p class="faq-footer">¿Tienes otra pregunta? <a href="#contacto">Escríbenos directamente →</a></p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CONTACTO
+══════════════════════════════════════════ -->
+<section class="section" id="contacto">
+  <div class="container">
+    <div class="contact-grid">
+
+      <div class="contact-info">
+        <span class="section-tag">Hablemos</span>
+        <h2 class="section-title" style="margin-top:0.5rem;">Estamos <em>aquí</em></h2>
+        <p class="section-sub" style="text-align:left;">Nuestro equipo de conserjería responde en menos de 2 horas.</p>
+
+        <div class="contact-items">
+          <a href="tel:+50422330000" class="contact-item-link">
+            <div class="contact-item">
+              <div class="c-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1 19.79 19.79 0 0 1 1.6 4.55 2 2 0 0 1 3.59 2.36h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <span class="c-label">Teléfono</span>
+                <strong class="c-value">+504 2233-0000</strong>
+              </div>
+            </div>
+          </a>
+          <a href="mailto:concierge@hnd.hn" class="contact-item-link">
+            <div class="contact-item">
+              <div class="c-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <span class="c-label">Correo</span>
+                <strong class="c-value">concierge@hnd.hn</strong>
+              </div>
+            </div>
+          </a>
+          <div class="contact-item">
+            <div class="c-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <span class="c-label">Horario de atención</span>
+              <strong class="c-value">Lun–Dom, 6:00 AM – 10:00 PM</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm" onsubmit="handleContactForm(event)">
+        <h3 class="form-title">Envíanos un mensaje</h3>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="c-name">Nombre completo</label>
+            <input type="text" id="c-name" placeholder="Juan Pérez" required>
+          </div>
+          <div class="form-field">
+            <label for="c-email">Correo electrónico</label>
+            <input type="email" id="c-email" placeholder="tu@correo.com" required>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="c-subject">Asunto</label>
+          <select id="c-subject">
+            <option value="">Selecciona un asunto</option>
+            <option>Consulta general</option>
+            <option>Eventos corporativos</option>
+            <option>Reserva grupal</option>
+            <option>Reportar un problema</option>
+            <option>Alianzas y partnerships</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="c-msg">Tu mensaje</label>
+          <textarea id="c-msg" rows="4" placeholder="¿Cómo podemos ayudarte?" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">
+          <span>Enviar mensaje</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="footer-logo">
+            <span class="brand-hnd">HND</span><span class="brand-luxe">LUXE</span>
+          </div>
+          <p class="footer-tagline">Redefiniendo la hospitalidad de lujo en Centroamérica desde 2018.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="menu">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#hoteles">Destinos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#precios">Tarifas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#faq">Ayuda</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-primary btn-sm text-white ml-lg-3 px-3 rounded-pill"
-                            href="#contacto">Contacto</a></li>
-                </ul>
-            </div>
+            <a href="#" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="WhatsApp">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </a>
+          </div>
         </div>
-    </nav>
 
-    <header class="jumbotron jumbotron-fluid text-white d-flex align-items-center mb-0">
-        <div class="container text-center py-5">
-            <h1 class="display-1 font-weight-bold animate-up">Honduras Premium</h1>
-            <p class="lead mb-5 opacity-75">Donde el lujo se encuentra con la naturaleza virgen.</p>
-            <div class="d-flex justify-content-center flex-wrap">
-                <a href="#hoteles" class="btn btn-primary btn-lg rounded-pill px-5 m-2 shadow-lg">EXPLORAR</a>
-                <a href="#precios" class="btn btn-outline-light btn-lg rounded-pill px-5 m-2">VER PRECIOS</a>
-            </div>
+        <div class="footer-col">
+          <h6>Explorar</h6>
+          <ul>
+            <li><a href="#hoteles">Nuestros Hoteles</a></li>
+            <li><a href="#servicios">Servicios VIP</a></li>
+            <li><a href="#precios">Tarifas 2026</a></li>
+            <li><a href="#faq">Preguntas Frecuentes</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
         </div>
-    </header>
 
-    <main class="container mt-n5 position-relative" style="z-index: 10;">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb shadow border-0 rounded-pill px-4 bg-white">
-                <li class="breadcrumb-item"><a href="#">Portal</a></li>
-                <li class="breadcrumb-item"><a href="#">Honduras</a></li>
-                <li class="breadcrumb-item active">Reserva de Lujo</li>
-            </ol>
-        </nav>
-
-        <section id="hoteles" class="py-5">
-            <div class="row align-items-end mb-5">
-                <div class="col-md-8">
-                    <h2 class="display-4 font-weight-bold">Nuestros Destinos</h2>
-                    <p class="text-muted lead">Hoteles diseñados para superar tus expectativas.</p>
-                </div>
-                <div class="col-md-4 text-md-right d-none d-md-block">
-                    <span class="badge badge-primary px-3 py-2 rounded-pill">3 DESTINOS DISPONIBLES</span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card card-hotel h-100 shadow border-0 overflow-hidden">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80"
-                                class="card-img-top" alt="SPS">
-                            <span class="badge badge-dark position-absolute m-3 p-2"
-                                style="top:0; right:0;">NEGOCIOS</span>
-                        </div>
-                        <div class="card-body p-4">
-                            <h4 class="font-weight-bold mb-3">Executive Sula</h4>
-                            <p class="text-muted small">Ubicado en el corazón del distrito financiero, perfecto para el
-                                viajero moderno.</p>
-                            <div class="d-flex text-primary mb-3">
-                                <span class="oi oi-star mr-1"></span><span class="oi oi-star mr-1"></span><span
-                                    class="oi oi-star mr-1"></span><span class="oi oi-star mr-1"></span>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white border-0 pb-4 px-4">
-                            <button class="btn btn-primary btn-block rounded-pill font-weight-bold" data-toggle="modal"
-                                data-target="#modalReserva">RESERVAR $85</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card card-hotel h-100 shadow border-0 overflow-hidden">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=600&q=80"
-                                class="card-img-top" alt="Roatán">
-                            <span class="badge badge-info position-absolute m-3 p-2"
-                                style="top:0; right:0;">PLAYA</span>
-                        </div>
-                        <div class="card-body p-4">
-                            <h4 class="font-weight-bold mb-3">Coral Reef Roatán</h4>
-                            <p class="text-muted small">Sumerge tus sentidos en el Caribe hondureño con acceso privado
-                                al arrecife.</p>
-                            <div class="d-flex text-primary mb-3">
-                                <span class="oi oi-star mr-1"></span><span class="oi oi-star mr-1"></span><span
-                                    class="oi oi-star mr-1"></span><span class="oi oi-star mr-1"></span><span
-                                    class="oi oi-star"></span>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white border-0 pb-4 px-4">
-                            <button class="btn btn-primary btn-block rounded-pill font-weight-bold" data-toggle="modal"
-                                data-target="#modalReserva">RESERVAR $145</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4 mx-auto">
-                    <div class="card card-hotel h-100 shadow border-0 overflow-hidden">
-                        <div class="position-relative">
-                            <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=600&q=80"
-                                class="card-img-top" alt="Copán">
-                            <span class="badge badge-warning position-absolute m-3 p-2"
-                                style="top:0; right:0;">HISTORIA</span>
-                        </div>
-                        <div class="card-body p-4">
-                            <h4 class="font-weight-bold mb-3">Ruinas Heritage</h4>
-                            <p class="text-muted small">Una joya arquitectónica rodeada de la mística cultura de los
-                                antiguos Mayas.</p>
-                            <div class="d-flex text-primary mb-3">
-                                <span class="oi oi-star mr-1"></span><span class="oi oi-star mr-1"></span><span
-                                    class="oi oi-star mr-1"></span><span class="oi oi-star mr-1"></span>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-white border-0 pb-4 px-4">
-                            <button class="btn btn-primary btn-block rounded-pill font-weight-bold" data-toggle="modal"
-                                data-target="#modalReserva">RESERVAR $60</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="servicios" class="py-5 bg-dark text-white rounded-xl shadow-lg my-5 px-4">
-            <div class="row text-center">
-                <div class="col-md-3 mb-4">
-                    <span class="oi oi-wifi display-4 text-primary mb-3"></span>
-                    <h5>WiFi 6G</h5>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <span class="oi oi-droplet display-4 text-primary mb-3"></span>
-                    <h5>Spa & Relax</h5>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <span class="oi oi-shield display-4 text-primary mb-3"></span>
-                    <h5>Seguridad 24/7</h5>
-                </div>
-                <div class="col-md-3 mb-4">
-                    <span class="oi oi-cart display-4 text-primary mb-3"></span>
-                    <h5>Room Service</h5>
-                </div>
-            </div>
-        </section>
-
-        <section id="precios" class="py-5">
-            <h2 class="text-center font-weight-bold display-4 mb-5">Tabla Comparativa</h2>
-            <div class="table-responsive shadow rounded-xl bg-white border overflow-hidden">
-                <table class="table table-borderless table-hover mb-0">
-                    <thead class="bg-primary text-white">
-                        <tr>
-                            <th class="py-4 pl-4 text-uppercase small tracking-wider">Plan / Ubicación</th>
-                            <th class="py-4">Básico</th>
-                            <th class="py-4">Ejecutivo</th>
-                            <th class="py-4">Ultra-Luxe</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-bottom">
-                            <td class="pl-4 py-4 font-weight-bold"><span class="oi oi-location mr-3"></span>Tegucigalpa
-                            </td>
-                            <td>$50.00</td>
-                            <td>$85.00</td>
-                            <td>$130.00</td>
-                        </tr>
-                        <tr class="border-bottom">
-                            <td class="pl-4 py-4 font-weight-bold"><span class="oi oi-map mr-3"></span>Roatán</td>
-                            <td>$110.00</td>
-                            <td>$190.00</td>
-                            <td>$350.00</td>
-                        </tr>
-                        <tr>
-                            <td class="pl-4 py-4 font-weight-bold"><span class="oi oi-compass mr-3"></span>Copán Ruinas
-                            </td>
-                            <td>$45.00</td>
-                            <td>$75.00</td>
-                            <td>$110.00</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section id="faq" class="py-5">
-            <h2 class="text-center mb-5 font-weight-bold">Preguntas Frecuentes</h2>
-            <div class="accordion shadow-sm rounded-xl overflow-hidden" id="faqHND">
-                <div class="card border-0 border-bottom">
-                    <div class="card-header bg-white p-0">
-                        <button
-                            class="btn btn-link btn-block text-left p-4 font-weight-bold text-dark text-decoration-none"
-                            data-toggle="collapse" data-target="#q1">
-                            ¿Cuál es la política de cancelación?
-                        </button>
-                    </div>
-                    <div id="q1" class="collapse show" data-parent="#faqHND">
-                        <div class="card-body px-4 pb-4 pt-0 text-muted">Ofrecemos cancelación gratuita hasta 48 horas
-                            antes de su llegada en todos nuestros destinos.</div>
-                    </div>
-                </div>
-                <div class="card border-0">
-                    <div class="card-header bg-white p-0">
-                        <button
-                            class="btn btn-link btn-block text-left p-4 font-weight-bold text-dark text-decoration-none collapsed"
-                            data-toggle="collapse" data-target="#q2">
-                            ¿Incluyen transporte desde el aeropuerto?
-                        </button>
-                    </div>
-                    <div id="q2" class="collapse" data-parent="#faqHND">
-                        <div class="card-body px-4 pb-4 pt-0 text-muted">Sí, los planes Ejecutivo y Ultra-Luxe incluyen
-                            transporte privado ida y vuelta al aeropuerto principal más cercano.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contacto" class="py-5">
-            <div class="row align-items-center">
-                <div class="col-lg-5 mb-5 mb-lg-0 text-center text-lg-left">
-                    <h2 class="display-4 font-weight-bold mb-4">¿Tienes Dudas?</h2>
-                    <p class="lead text-muted mb-4">Nuestro equipo de conserjería está disponible los 365 días del año
-                        para asistirte.</p>
-                    <div class="d-inline-block bg-white p-3 shadow-sm rounded-lg mb-2 mr-2">
-                        <span class="oi oi-phone text-primary"></span> +504 2233-0000
-                    </div>
-                    <div class="d-inline-block bg-white p-3 shadow-sm rounded-lg">
-                        <span class="oi oi-envelope text-primary"></span> help@hnd.hn
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <form class="bg-white p-5 shadow rounded-xl">
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label class="mini-label">Nombre</label>
-                                <input type="text" class="form-control custom-input" required>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label class="mini-label">Email</label>
-                                <input type="email" class="form-control custom-input" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="mini-label">Sede de interés</label>
-                            <select class="form-control custom-input">
-                                <option>Executive Sula (San Pedro Sula)</option>
-                                <option>Coral Reef (Roatán)</option>
-                                <option>Ruinas Heritage (Copán)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="mini-label">Mensaje</label>
-                            <textarea class="form-control custom-input" rows="4"></textarea>
-                        </div>
-                        <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="c1">
-                            <label class="form-check-label small text-muted" for="c1">Deseo suscribirme al boletín de
-                                ofertas exclusivas.</label>
-                        </div>
-                        <button type="submit"
-                            class="btn btn-primary btn-block py-3 font-weight-bold rounded-pill">ENVIAR
-                            CONSULTA</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <div class="modal fade" id="modalReserva" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-            <div class="modal-content border-0 shadow-lg rounded-xl overflow-hidden">
-                <div class="modal-header bg-primary text-white border-0 py-4">
-                    <h5 class="modal-title font-weight-bold">
-                        <span class="oi oi-calendar mr-2"></span> CONFIRMAR ESTANCIA
-                    </h5>
-                    <button type="button" class="close text-white" data-dismiss="modal">
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body p-4 p-md-5">
-                    <div class="mb-5">
-                        <div class="d-flex justify-content-between mb-2 small font-weight-bold">
-                            <span class="text-uppercase">Procesando disponibilidad</span>
-                            <span class="text-primary">92%</span>
-                        </div>
-                        <div class="progress" style="height: 6px;">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                                style="width: 92%"></div>
-                        </div>
-                    </div>
-                    <form>
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <label class="mini-label font-weight-bold">Llegada</label>
-                                <input type="date" class="form-control custom-input">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label class="mini-label font-weight-bold">Salida</label>
-                                <input type="date" class="form-control custom-input">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 form-group">
-                                <label class="mini-label font-weight-bold">Preferencia de Habitación</label>
-                                <div class="btn-group-toggle d-flex" data-toggle="buttons">
-                                    <label class="btn btn-outline-primary flex-fill mr-2 active rounded-lg py-3">
-                                        <input type="radio" name="r" checked> <span
-                                            class="d-block font-weight-bold">Clásica</span>
-                                    </label>
-                                    <label class="btn btn-outline-primary flex-fill mr-2 rounded-lg py-3">
-                                        <input type="radio" name="r"> <span
-                                            class="d-block font-weight-bold">Suite</span>
-                                    </label>
-                                    <label class="btn btn-outline-primary flex-fill rounded-lg py-3">
-                                        <input type="radio" name="r"> <span
-                                            class="d-block font-weight-bold">Presidencial</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button"
-                            class="btn btn-success btn-block btn-lg rounded-pill font-weight-bold shadow mt-4 py-3"
-                            onclick="alert('Conectando con banco...')">
-                            PROCEDER AL PAGO SEGURO
-                        </button>
-                    </form>
-                </div>
-            </div>
+        <div class="footer-col">
+          <h6>Destinos</h6>
+          <ul>
+            <li><a href="#" onclick="openModal('sula'); return false;">San Pedro Sula</a></li>
+            <li><a href="#" onclick="openModal('roatan'); return false;">Roatán</a></li>
+            <li><a href="#" onclick="openModal('copan'); return false;">Copán Ruinas</a></li>
+            <li><a href="#contacto">Tegucigalpa <span style="font-size:0.65rem; opacity:0.5; margin-left:4px;">Próximo</span></a></li>
+          </ul>
         </div>
+
+        <div class="footer-col footer-newsletter">
+          <h6>Newsletter</h6>
+          <p>Recibe ofertas exclusivas antes que nadie.</p>
+          <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+            <input type="email" placeholder="tu@correo.com" required>
+            <button type="submit">→</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <span>© <span id="year"></span> HND Corporación Honduras. Todos los derechos reservados.</span>
+      <div class="footer-legal">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos de uso</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     MODAL DE RESERVA (inteligente por hotel)
+══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
+  <div class="modal-box" id="modalBox" role="dialog" aria-modal="true" aria-labelledby="modalHotelName">
+
+    <!-- Imagen lateral dinámica -->
+    <div class="modal-left" id="modalLeft">
+      <div class="modal-left-overlay"></div>
+      <button class="modal-close-mobile" onclick="closeModal()" aria-label="Cerrar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="modal-left-content">
+        <div class="modal-hotel-rating" id="modalRating">★★★★★ · <span id="modalScore">5.0</span></div>
+        <h2 class="modal-hotel-name" id="modalHotelName">Coral Reef Roatán</h2>
+        <p class="modal-hotel-loc" id="modalHotelLoc">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span id="modalLocation">Roatán, Islas de la Bahía</span>
+        </p>
+        <p class="modal-hotel-quote" id="modalQuote">"Una experiencia que cambia tu perspectiva del paraíso."</p>
+      </div>
     </div>
 
-    <footer class="bg-dark text-white pt-5 pb-4 mt-5 border-top-primary">
-        <div class="container text-md-left">
-            <div class="row">
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <h5 class="text-uppercase mb-4 font-weight-bold text-primary">HND HOTELES</h5>
-                    <p class="small text-muted mb-4">Orgullosamente hondureños, brindando experiencias de clase mundial
-                        desde hace una década.</p>
-                    <div class="h4">
-                        <span class="oi oi-social-facebook mr-3"></span>
-                        <span class="oi oi-social-instagram mr-3"></span>
-                        <span class="oi oi-social-twitter"></span>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Enlaces Rápidos</h6>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-muted small">Política de Cookies</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted small">Trabaja con Nosotros</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted small">Blog de Viajes</a></li>
-                        <li><a href="#" class="text-muted small">Afiliados</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Suscríbete</h6>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control custom-input bg-secondary text-white border-0"
-                            placeholder="Tu email">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary px-3 rounded-right" type="button"><span
-                                    class="oi oi-arrow-right"></span></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <hr class="bg-secondary mt-5">
-            <div class="row align-items-center">
-                <div class="col-md-7 text-center text-md-left">
-                    <p class="small text-muted mb-0">© 2026 HND Corporación Honduras. Todos los derechos reservados.</p>
-                </div>
-                <div class="col-md-5 text-center text-md-right mt-3 mt-md-0">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png"
-                        height="20" class="mr-3 filter-gray">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png"
-                        height="20" class="filter-gray">
-                </div>
-            </div>
+    <!-- Formulario -->
+    <div class="modal-right">
+      <div class="modal-right-header">
+        <div>
+          <h3 class="modal-title">Reserva tu estadía</h3>
+          <p class="modal-subtitle">Completa los datos y nos contactamos en minutos</p>
         </div>
-    </footer>
+        <button class="modal-close-btn" onclick="closeModal()" aria-label="Cerrar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
 
-    <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
-    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+      <!-- Step indicator -->
+      <div class="modal-steps">
+        <div class="step-dot active" id="step1dot"></div>
+        <div class="step-line"></div>
+        <div class="step-dot" id="step2dot"></div>
+        <div class="step-line"></div>
+        <div class="step-dot" id="step3dot"></div>
+      </div>
+
+      <form id="reservaForm" onsubmit="handleReserva(event)">
+
+        <!-- Step 1: Detalles -->
+        <div class="form-step active" id="formStep1">
+          <div class="form-field-modal">
+            <label>Hotel seleccionado</label>
+            <div class="hotel-selector" id="hotelSelector">
+              <div class="hotel-opt active" data-hotel="sula" onclick="switchHotel('sula')">
+                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=120&q=60" alt="">
+                <span>Executive Sula</span>
+              </div>
+              <div class="hotel-opt" data-hotel="roatan" onclick="switchHotel('roatan')">
+                <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=120&q=60" alt="">
+                <span>Coral Reef</span>
+              </div>
+              <div class="hotel-opt" data-hotel="copan" onclick="switchHotel('copan')">
+                <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=120&q=60" alt="">
+                <span>Ruinas Heritage</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-field-modal">
+            <label>Tipo de habitación</label>
+            <select id="roomType">
+              <option>Suite Estándar</option>
+              <option>Suite Ejecutiva</option>
+              <option>Suite Premium con Vista</option>
+              <option>Penthouse</option>
+            </select>
+          </div>
+
+          <div class="modal-date-row">
+            <div class="form-field-modal">
+              <label>Check-In</label>
+              <input type="date" id="checkIn" required>
+            </div>
+            <div class="form-field-modal">
+              <label>Check-Out</label>
+              <input type="date" id="checkOut" required>
+            </div>
+          </div>
+
+          <div class="form-field-modal">
+            <label>Huéspedes</label>
+            <div class="guests-control">
+              <button type="button" class="guests-btn" onclick="changeGuests(-1)">−</button>
+              <span id="guestsCount">2</span>
+              <button type="button" class="guests-btn" onclick="changeGuests(1)">+</button>
+              <span class="guests-label">adultos</span>
+            </div>
+          </div>
+
+          <button type="button" class="btn-next" onclick="goStep(2)">
+            Continuar
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+
+        <!-- Step 2: Datos personales -->
+        <div class="form-step" id="formStep2">
+          <div class="modal-date-row">
+            <div class="form-field-modal">
+              <label>Nombre completo</label>
+              <input type="text" id="guestName" placeholder="Juan Pérez" required>
+            </div>
+            <div class="form-field-modal">
+              <label>Correo electrónico</label>
+              <input type="email" id="guestEmail" placeholder="tu@correo.com" required>
+            </div>
+          </div>
+          <div class="form-field-modal">
+            <label>Teléfono (opcional)</label>
+            <input type="tel" id="guestPhone" placeholder="+504 0000-0000">
+          </div>
+          <div class="form-field-modal">
+            <label>Solicitudes especiales</label>
+            <textarea rows="2" id="guestNotes" placeholder="Alergias, preferencias, ocasiones especiales..."></textarea>
+          </div>
+
+          <div class="step-nav">
+            <button type="button" class="btn-back" onclick="goStep(1)">← Atrás</button>
+            <button type="button" class="btn-next" onclick="goStep(3)">
+              Ver resumen
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Resumen y confirmación -->
+        <div class="form-step" id="formStep3">
+          <div class="reservation-summary" id="reservationSummary">
+            <!-- generado por JS -->
+          </div>
+
+          <div class="promo-input-row">
+            <input type="text" id="promoCode" placeholder="Código promocional (ej. HND2026)">
+            <button type="button" onclick="applyPromo()">Aplicar</button>
+          </div>
+
+          <div class="summary-total" id="summaryTotal">
+            <!-- generado por JS -->
+          </div>
+
+          <div class="step-nav">
+            <button type="button" class="btn-back" onclick="goStep(2)">← Atrás</button>
+            <button type="submit" class="btn-confirm">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Confirmar reserva
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════
+const HOTELS = {
+  sula: {
+    name: 'Executive Sula',
+    location: 'San Pedro Sula, Honduras',
+    score: '4.8',
+    price: 85,
+    quote: '"El estándar de confort para el viajero de negocios moderno."',
+    img: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=900&q=85',
+    badge: 'Negocios',
+  },
+  roatan: {
+    name: 'Coral Reef Roatán',
+    location: 'Roatán, Islas de la Bahía',
+    score: '5.0',
+    price: 145,
+    quote: '"Una experiencia que cambia tu perspectiva del paraíso."',
+    img: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=900&q=85',
+    badge: 'Playa & Luxe',
+  },
+  copan: {
+    name: 'Ruinas Heritage',
+    location: 'Copán Ruinas, Honduras',
+    score: '4.7',
+    price: 60,
+    quote: '"Donde la historia Maya se siente en cada piedra."',
+    img: 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=900&q=85',
+    badge: 'Historia & Cultura',
+  }
+};
+
+let currentHotel = 'roatan';
+let currentStep = 1;
+let guests = 2;
+let promoApplied = false;
+
+// ═══════════════════════════════════════════════
+// MODAL
+// ═══════════════════════════════════════════════
+function openModal(hotelKey) {
+  currentHotel = hotelKey || 'roatan';
+  currentStep = 1;
+  promoApplied = false;
+  document.getElementById('promoCode') && (document.getElementById('promoCode').value = '');
+
+  updateModalUI(currentHotel);
+  updateHotelSelector(currentHotel);
+  showStep(1);
+
+  const overlay = document.getElementById('modalOverlay');
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function closeModalOnBg(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+function switchHotel(hotelKey) {
+  currentHotel = hotelKey;
+  updateModalUI(hotelKey);
+  updateHotelSelector(hotelKey);
+}
+
+function updateModalUI(hotelKey) {
+  const h = HOTELS[hotelKey];
+  document.getElementById('modalLeft').style.backgroundImage = `url('${h.img}')`;
+  document.getElementById('modalHotelName').textContent = h.name;
+  document.getElementById('modalLocation').textContent = h.location;
+  document.getElementById('modalScore').textContent = h.score;
+  document.getElementById('modalQuote').textContent = h.quote;
+}
+
+function updateHotelSelector(hotelKey) {
+  document.querySelectorAll('.hotel-opt').forEach(el => {
+    el.classList.toggle('active', el.dataset.hotel === hotelKey);
+  });
+}
+
+// ═══════════════════════════════════════════════
+// STEPS
+// ═══════════════════════════════════════════════
+function goStep(n) {
+  if (n === 2) {
+    const ci = document.getElementById('checkIn').value;
+    const co = document.getElementById('checkOut').value;
+    if (!ci || !co) { showToast('¡Espera!', 'Selecciona tus fechas de check-in y check-out.', 'warn'); return; }
+    if (new Date(co) <= new Date(ci)) { showToast('Fechas inválidas', 'El check-out debe ser posterior al check-in.', 'warn'); return; }
+  }
+  if (n === 3) {
+    const name = document.getElementById('guestName').value.trim();
+    const email = document.getElementById('guestEmail').value.trim();
+    if (!name || !email) { showToast('Datos incompletos', 'Por favor completa tu nombre y correo.', 'warn'); return; }
+    buildSummary();
+  }
+  showStep(n);
+}
+
+function showStep(n) {
+  currentStep = n;
+  for (let i = 1; i <= 3; i++) {
+    const step = document.getElementById(`formStep${i}`);
+    step.classList.toggle('active', i === n);
+    const dot = document.getElementById(`step${i}dot`);
+    dot.classList.toggle('active', i <= n);
+    dot.classList.toggle('done', i < n);
+  }
+  document.querySelector('.modal-right').scrollTop = 0;
+}
+
+// ═══════════════════════════════════════════════
+// GUESTS COUNTER
+// ═══════════════════════════════════════════════
+function changeGuests(d) {
+  guests = Math.max(1, Math.min(8, guests + d));
+  document.getElementById('guestsCount').textContent = guests;
+}
+
+// ═══════════════════════════════════════════════
+// SUMMARY BUILDER
+// ═══════════════════════════════════════════════
+function buildSummary() {
+  const h = HOTELS[currentHotel];
+  const ci = new Date(document.getElementById('checkIn').value);
+  const co = new Date(document.getElementById('checkOut').value);
+  const nights = Math.round((co - ci) / (1000 * 60 * 60 * 24));
+  const room = document.getElementById('roomType').value;
+  const baseTotal = h.price * nights * guests;
+  const tax = Math.round(baseTotal * 0.15);
+  const discount = promoApplied ? Math.round(baseTotal * 0.20) : 0;
+  const total = baseTotal + tax - discount;
+
+  const opts = { day: '2-digit', month: 'short', year: 'numeric' };
+  const ciStr = ci.toLocaleDateString('es-HN', opts);
+  const coStr = co.toLocaleDateString('es-HN', opts);
+
+  document.getElementById('reservationSummary').innerHTML = `
+    <div class="sum-row">
+      <div class="sum-hotel">
+        <img src="${h.img}" alt="${h.name}" class="sum-hotel-img">
+        <div>
+          <strong>${h.name}</strong>
+          <span>${h.location}</span>
+        </div>
+      </div>
+    </div>
+    <div class="sum-details">
+      <div class="sum-line"><span>Habitación</span><span>${room}</span></div>
+      <div class="sum-line"><span>Fechas</span><span>${ciStr} → ${coStr}</span></div>
+      <div class="sum-line"><span>Huéspedes</span><span>${guests} adulto${guests > 1 ? 's' : ''}</span></div>
+      <div class="sum-line"><span>Noches</span><span>${nights}</span></div>
+      <div class="sum-line"><span>Tarifa base</span><span>$${h.price} × ${nights}n × ${guests}p</span></div>
+      <div class="sum-line"><span>Subtotal</span><span>$${baseTotal.toFixed(2)}</span></div>
+      <div class="sum-line"><span>Impuestos (15%)</span><span>$${tax.toFixed(2)}</span></div>
+      ${discount ? `<div class="sum-line sum-promo"><span>Descuento 20% (HND2026)</span><span>−$${discount.toFixed(2)}</span></div>` : ''}
+    </div>
+  `;
+
+  document.getElementById('summaryTotal').innerHTML = `
+    <div class="total-line">
+      <span>Total a pagar</span>
+      <strong>$${total.toFixed(2)}</strong>
+    </div>
+    <p class="total-note">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Pago seguro. Sin cargos ocultos. Cancelación flexible.
+    </p>
+  `;
+}
+
+function applyPromo() {
+  const code = document.getElementById('promoCode').value.trim().toUpperCase();
+  if (code === 'HND2026') {
+    promoApplied = true;
+    buildSummary();
+    showToast('¡Código aplicado!', '20% de descuento activado en tu reserva.', 'success');
+  } else {
+    showToast('Código inválido', 'Verifica el código e inténtalo de nuevo.', 'warn');
+  }
+}
+
+// ═══════════════════════════════════════════════
+// FORM SUBMIT
+// ═══════════════════════════════════════════════
+function handleReserva(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-confirm');
+  btn.classList.add('loading');
+  btn.disabled = true;
+  setTimeout(() => {
+    closeModal();
+    btn.classList.remove('loading');
+    btn.disabled = false;
+    document.getElementById('reservaForm').reset();
+    guests = 2;
+    document.getElementById('guestsCount').textContent = '2';
+    showToast('¡Reserva enviada!', `Te confirmamos por correo en los próximos minutos.`, 'success');
+  }, 1800);
+}
+
+function handleContactForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-submit');
+  btn.classList.add('loading');
+  setTimeout(() => {
+    e.target.reset();
+    btn.classList.remove('loading');
+    showToast('¡Mensaje enviado!', 'Te respondemos en menos de 2 horas.', 'success');
+  }, 1500);
+}
+
+function handleNewsletter(e) {
+  e.preventDefault();
+  e.target.reset();
+  showToast('¡Suscrito!', 'Recibirás las mejores ofertas exclusivas.', 'success');
+}
+
+// ═══════════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════════
+let toastTimer;
+function showToast(title, msg, type = 'success') {
+  clearTimeout(toastTimer);
+  const toast = document.getElementById('toast');
+  document.getElementById('toast-title').textContent = title;
+  document.getElementById('toast-msg').textContent = msg;
+  toast.className = 'toast toast-' + type + ' show';
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 4000);
+}
+
+function closeToast() {
+  document.getElementById('toast').classList.remove('show');
+}
+
+// ═══════════════════════════════════════════════
+// NAVBAR
+// ═══════════════════════════════════════════════
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+document.getElementById('navToggle').addEventListener('click', function () {
+  const links = document.getElementById('navLinks');
+  const isOpen = links.classList.toggle('open');
+  this.classList.toggle('open', isOpen);
+});
+
+// Cerrar menú al hacer click en link
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('navToggle').classList.remove('open');
+  });
+});
+
+// Active nav on scroll
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY + 100;
+  sections.forEach(sec => {
+    const top = sec.offsetTop;
+    const bottom = top + sec.offsetHeight;
+    const id = sec.getAttribute('id');
+    const link = document.querySelector(`.nav-link[href="#${id}"]`);
+    if (link) link.classList.toggle('active', scrollY >= top && scrollY < bottom);
+  });
+}, { passive: true });
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = document.getElementById('navbar').offsetHeight;
+      window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+    }
+  });
+});
+
+// Keyboard escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// Year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.hotel-card, .service-item, .pricing-card, .faq-item, .contact-item').forEach(el => {
+  el.classList.add('reveal');
+  observer.observe(el);
+});
+</script>
+
 </body>
-
 </html>
