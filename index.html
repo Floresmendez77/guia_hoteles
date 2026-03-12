@@ -43,10 +43,12 @@
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+                <li><a href="#carrusel" class="nav-link">Destacados</a></li>
                 <li><a href="#hoteles" class="nav-link">Destinos</a></li>
                 <li><a href="#galeria" class="nav-link">Galería</a></li>
                 <li><a href="#servicios" class="nav-link">Servicios</a></li>
                 <li><a href="#precios" class="nav-link">Tarifas</a></li>
+                <li><a href="#info-extra" class="nav-link">Info</a></li>
                 <li><a href="#faq" class="nav-link">FAQ</a></li>
             </ul>
             <a href="#contacto" class="btn-reservar">Reservar ahora</a>
@@ -82,111 +84,178 @@
         </div>
     </section>
 
-    <section class="section" id="hoteles">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Nuestros Destinos</span>
-                <h2 class="section-title">Elige tu <em>escapada</em></h2>
-                <p class="section-sub">Cada propiedad diseñada para una experiencia completamente distinta.</p>
+    <!-- ══════════════════════════════════════════════════════════
+     CARRUSEL — Bootstrap carousel
+     • div#carouselHND con clase "carousel slide"
+     • Imágenes dentro de .carousel-inner, cada una .carousel-item
+     • Una lleva clase "active" para ser la inicial
+     • data-bs-ride="carousel" activa la rotación automática
+     • Botones prev/next con data-bs-target y data-bs-slide
+══════════════════════════════════════════════════════════ -->
+    <section class="carousel-section" id="carrusel">
+        <div id="carouselHND" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselHND" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselHND" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselHND" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-            <div class="hotels-grid">
-                <article class="hotel-card" data-hotel="sula">
-                    <div class="hotel-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=900&q=80"
-                            alt="Executive Sula" loading="lazy">
-                        <div class="hotel-img-overlay"><span class="hotel-badge">Negocios</span></div>
-                        <div class="hotel-price-tag"><span class="price-from">desde</span><span
-                                class="price-amount">$85</span><span class="price-unit">/noche</span></div>
+
+            <div class="carousel-inner">
+                <!-- Slide 1 — active (primera imagen visible) -->
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1400&q=85"
+                        class="d-block w-100 carousel-img" alt="Coral Reef Roatán">
+                    <div class="carousel-caption hnd-caption">
+                        <span class="caption-tag">⭐ Más elegido</span>
+                        <h3>Coral Reef Roatán</h3>
+                        <p>El paraíso caribeño. Arrecifes, suites frente al mar y bar flotante.</p>
+                        <button class="caption-btn" data-bs-toggle="modal" data-bs-target="#modalPago">Ver opciones de
+                            pago</button>
                     </div>
-                    <div class="hotel-body">
-                        <div class="hotel-meta">
-                            <div class="hotel-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                    <circle cx="12" cy="10" r="3" />
-                                </svg>San Pedro Sula</div>
-                            <div class="hotel-stars"><span class="stars-icon">★★★★★</span><span
-                                    class="stars-score">4.8</span></div>
-                        </div>
-                        <h3 class="hotel-name">Executive Sula</h3>
-                        <p class="hotel-desc">El corazón financiero de Honduras a tus pies. Perfecto para viajeros de
-                            negocios que no renuncian al confort premium.</p>
-                        <div class="hotel-amenities"><span class="amenity">WiFi 6</span><span
-                                class="amenity">Spa</span><span class="amenity">Rooftop</span><span class="amenity">Gym
-                                24h</span></div>
-                        <button class="btn-hotel-cta" onclick="openModal('sula')">Ver detalles y reservar <svg
-                                width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg></button>
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1400&q=85"
+                        class="d-block w-100 carousel-img" alt="Executive Sula">
+                    <div class="carousel-caption hnd-caption">
+                        <span class="caption-tag">🏙️ Negocios</span>
+                        <h3>Executive Sula</h3>
+                        <p>El estándar de lujo en el corazón financiero de Honduras.</p>
+                        <button class="caption-btn" data-bs-toggle="modal" data-bs-target="#modalPago">Ver opciones de
+                            pago</button>
                     </div>
-                </article>
-                <article class="hotel-card hotel-featured" data-hotel="roatan">
-                    <div class="hotel-featured-badge">⭐ Más elegido</div>
-                    <div class="hotel-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=900&q=80"
-                            alt="Coral Reef Roatán" loading="lazy">
-                        <div class="hotel-img-overlay"><span class="hotel-badge hotel-badge-gold">Playa &amp;
-                                Luxe</span></div>
-                        <div class="hotel-price-tag hotel-price-gold"><span class="price-from">desde</span><span
-                                class="price-amount">$145</span><span class="price-unit">/noche</span></div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1400&q=85"
+                        class="d-block w-100 carousel-img" alt="Ruinas Heritage">
+                    <div class="carousel-caption hnd-caption">
+                        <span class="caption-tag">🏛️ Historia &amp; Cultura</span>
+                        <h3>Ruinas Heritage</h3>
+                        <p>Arquitectura colonial del s. XVIII a pasos del legado Maya.</p>
+                        <button class="caption-btn" data-bs-toggle="modal" data-bs-target="#modalPago">Ver opciones de
+                            pago</button>
                     </div>
-                    <div class="hotel-body">
-                        <div class="hotel-meta">
-                            <div class="hotel-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                    <circle cx="12" cy="10" r="3" />
-                                </svg>Roatán, Islas de la Bahía</div>
-                            <div class="hotel-stars"><span class="stars-icon stars-gold">★★★★★</span><span
-                                    class="stars-score">5.0</span></div>
-                        </div>
-                        <h3 class="hotel-name">Coral Reef Roatán</h3>
-                        <p class="hotel-desc">Acceso privado a la segunda barrera de coral más grande del mundo. Suites
-                            frente al mar con vista al Caribe hondureño.</p>
-                        <div class="hotel-amenities"><span class="amenity">Playa Privada</span><span
-                                class="amenity">Snorkeling</span><span class="amenity">Bar en el Mar</span><span
-                                class="amenity">Spa</span></div>
-                        <button class="btn-hotel-cta btn-hotel-gold" onclick="openModal('roatan')">Ver detalles y
-                            reservar <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg></button>
-                    </div>
-                </article>
-                <article class="hotel-card" data-hotel="copan">
-                    <div class="hotel-img-wrap">
-                        <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=900&q=80"
-                            alt="Ruinas Heritage Copán" loading="lazy">
-                        <div class="hotel-img-overlay"><span class="hotel-badge">Historia &amp; Cultura</span></div>
-                        <div class="hotel-price-tag"><span class="price-from">desde</span><span
-                                class="price-amount">$60</span><span class="price-unit">/noche</span></div>
-                    </div>
-                    <div class="hotel-body">
-                        <div class="hotel-meta">
-                            <div class="hotel-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                    <circle cx="12" cy="10" r="3" />
-                                </svg>Copán Ruinas</div>
-                            <div class="hotel-stars"><span class="stars-icon">★★★★★</span><span
-                                    class="stars-score">4.7</span></div>
-                        </div>
-                        <h3 class="hotel-name">Ruinas Heritage</h3>
-                        <p class="hotel-desc">Elegancia colonial a pasos del legado Maya. Arquitectura auténtica del
-                            siglo XVIII restaurada con materiales locales.</p>
-                        <div class="hotel-amenities"><span class="amenity">Patio Colonial</span><span
-                                class="amenity">Tours Maya</span><span class="amenity">Restaurante</span><span
-                                class="amenity">WiFi</span></div>
-                        <button class="btn-hotel-cta" onclick="openModal('copan')">Ver detalles y reservar <svg
-                                width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg></button>
-                    </div>
-                </article>
+                </div>
             </div>
+
+            <!-- Botones prev / next -->
+            <button class="carousel-control-prev hnd-carousel-ctrl" type="button" data-bs-target="#carouselHND"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next hnd-carousel-ctrl" type="button" data-bs-target="#carouselHND"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+
         </div>
+    </section>
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Nuestros Destinos</span>
+            <h2 class="section-title">Elige tu <em>escapada</em></h2>
+            <p class="section-sub">Cada propiedad diseñada para una experiencia completamente distinta.</p>
+        </div>
+        <div class="hotels-grid">
+            <article class="hotel-card" data-hotel="sula">
+                <div class="hotel-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=900&q=80"
+                        alt="Executive Sula" loading="lazy">
+                    <div class="hotel-img-overlay"><span class="hotel-badge">Negocios</span></div>
+                    <div class="hotel-price-tag"><span class="price-from">desde</span><span
+                            class="price-amount">$85</span><span class="price-unit">/noche</span></div>
+                </div>
+                <div class="hotel-body">
+                    <div class="hotel-meta">
+                        <div class="hotel-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>San Pedro Sula</div>
+                        <div class="hotel-stars"><span class="stars-icon">★★★★★</span><span
+                                class="stars-score">4.8</span></div>
+                    </div>
+                    <h3 class="hotel-name">Executive Sula</h3>
+                    <p class="hotel-desc">El corazón financiero de Honduras a tus pies. Perfecto para viajeros de
+                        negocios que no renuncian al confort premium.</p>
+                    <div class="hotel-amenities"><span class="amenity">WiFi 6</span><span
+                            class="amenity">Spa</span><span class="amenity">Rooftop</span><span class="amenity">Gym
+                            24h</span></div>
+                    <button class="btn-hotel-cta" onclick="openModal('sula')">Ver detalles y reservar <svg width="14"
+                            height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg></button>
+                </div>
+            </article>
+            <article class="hotel-card hotel-featured" data-hotel="roatan">
+                <div class="hotel-featured-badge">⭐ Más elegido</div>
+                <div class="hotel-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=900&q=80"
+                        alt="Coral Reef Roatán" loading="lazy">
+                    <div class="hotel-img-overlay"><span class="hotel-badge hotel-badge-gold">Playa &amp; Luxe</span>
+                    </div>
+                    <div class="hotel-price-tag hotel-price-gold"><span class="price-from">desde</span><span
+                            class="price-amount">$145</span><span class="price-unit">/noche</span></div>
+                </div>
+                <div class="hotel-body">
+                    <div class="hotel-meta">
+                        <div class="hotel-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>Roatán, Islas de la Bahía</div>
+                        <div class="hotel-stars"><span class="stars-icon stars-gold">★★★★★</span><span
+                                class="stars-score">5.0</span></div>
+                    </div>
+                    <h3 class="hotel-name">Coral Reef Roatán</h3>
+                    <p class="hotel-desc">Acceso privado a la segunda barrera de coral más grande del mundo. Suites
+                        frente al mar con vista al Caribe hondureño.</p>
+                    <div class="hotel-amenities"><span class="amenity">Playa Privada</span><span
+                            class="amenity">Snorkeling</span><span class="amenity">Bar en el Mar</span><span
+                            class="amenity">Spa</span></div>
+                    <button class="btn-hotel-cta btn-hotel-gold" onclick="openModal('roatan')">Ver detalles y reservar
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg></button>
+                </div>
+            </article>
+            <article class="hotel-card" data-hotel="copan">
+                <div class="hotel-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=900&q=80"
+                        alt="Ruinas Heritage Copán" loading="lazy">
+                    <div class="hotel-img-overlay"><span class="hotel-badge">Historia &amp; Cultura</span></div>
+                    <div class="hotel-price-tag"><span class="price-from">desde</span><span
+                            class="price-amount">$60</span><span class="price-unit">/noche</span></div>
+                </div>
+                <div class="hotel-body">
+                    <div class="hotel-meta">
+                        <div class="hotel-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>Copán Ruinas</div>
+                        <div class="hotel-stars"><span class="stars-icon">★★★★★</span><span
+                                class="stars-score">4.7</span></div>
+                    </div>
+                    <h3 class="hotel-name">Ruinas Heritage</h3>
+                    <p class="hotel-desc">Elegancia colonial a pasos del legado Maya. Arquitectura auténtica del siglo
+                        XVIII restaurada con materiales locales.</p>
+                    <div class="hotel-amenities"><span class="amenity">Patio Colonial</span><span class="amenity">Tours
+                            Maya</span><span class="amenity">Restaurante</span><span class="amenity">WiFi</span></div>
+                    <button class="btn-hotel-cta" onclick="openModal('copan')">Ver detalles y reservar <svg width="14"
+                            height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg></button>
+                </div>
+            </article>
+        </div>
+    </div>
     </section>
 
     <!-- ══════════════════════════════════════════════════════════
@@ -638,6 +707,7 @@
                 <p class="section-sub">Precios por noche por persona. Incluye todos los impuestos.</p>
             </div>
             <div class="pricing-grid">
+
                 <div class="pricing-card">
                     <div class="pricing-header"><span class="plan-name">Essential</span>
                         <div class="plan-price"><span>$85</span><small>/noche</small></div>
@@ -667,8 +737,12 @@
                                 <line x1="6" y1="6" x2="18" y2="18" />
                             </svg> Traslado aeropuerto</li>
                     </ul>
-                    <a href="#contacto" class="btn-plan-outline">Seleccionar plan</a>
+                    <!-- Tooltip: title muestra el tooltip al hacer hover -->
+                    <button class="btn-plan-outline" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Plan básico con todas las comodidades esenciales" onclick="openModal('sula')">Seleccionar
+                        plan</button>
                 </div>
+
                 <div class="pricing-card pricing-featured">
                     <div class="pricing-ribbon">Recomendado</div>
                     <div class="pricing-header"><span class="plan-name" style="color:#c9a96e;">Executive Plus</span>
@@ -697,8 +771,15 @@
                                 <polyline points="20 6 9 17 4 12" />
                             </svg> Concierge personal 24h</li>
                     </ul>
-                    <a href="#contacto" class="btn-plan-gold">Reservar ahora</a>
+                    <!-- Popover: muestra un recuadro con título y contenido al hacer clic -->
+                    <button class="btn-plan-gold" data-bs-toggle="popover" data-bs-trigger="click"
+                        data-bs-title="💳 Formas de pago"
+                        data-bs-content="Visa, Mastercard, Amex, PayPal y transferencia. Cuotas sin interés disponibles con BAC y Ficohsa."
+                        onclick="openModal('roatan')">
+                        Reservar ahora
+                    </button>
                 </div>
+
                 <div class="pricing-card">
                     <div class="pricing-header"><span class="plan-name">Ultra Luxe</span>
                         <div class="plan-price"><span>$210</span><small>/noche</small></div>
@@ -726,78 +807,304 @@
                                 <polyline points="20 6 9 17 4 12" />
                             </svg> Suite garantizada siempre</li>
                     </ul>
-                    <a href="#contacto" class="btn-plan-outline">Solicitar exclusividad</a>
+                    <!-- Tooltip -->
+                    <button class="btn-plan-outline" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Experiencia exclusiva todo incluido — disponibilidad limitada"
+                        onclick="openModal('copan')">Solicitar exclusividad</button>
                 </div>
+
             </div>
+
+            <!-- ──────────────────────────────────────────────────────
+         ACCORDION DE OPCIONES DE PAGO — dentro de la sección
+         de precios, igual que el tutorial.
+         • div.accordion con id="accordionPagos"
+         • Cada .accordion-item tiene header + collapse body
+         • data-bs-parent="#accordionPagos" → solo uno abierto
+         • Primer ítem con "collapse show" → abierto por defecto
+    ────────────────────────────────────────────────────── -->
+            <div class="pago-accordion-wrap">
+                <h3 class="pago-accordion-title">💳 Opciones de <em>pago</em></h3>
+                <p class="pago-accordion-sub">Selecciona tu método preferido para conocer los detalles.</p>
+
+                <div class="accordion hnd-accordion" id="accordionPagos">
+
+                    <!-- Ítem 1 — abierto por defecto ("collapse show") -->
+                    <div class="accordion-item hnd-accordion-item">
+                        <h2 class="accordion-header" id="pagoHead1">
+                            <button class="accordion-button hnd-accordion-btn" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#pagoBody1" aria-expanded="true" aria-controls="pagoBody1">
+                                💳 Tarjeta de crédito / débito
+                            </button>
+                        </h2>
+                        <div id="pagoBody1" class="accordion-collapse collapse show" aria-labelledby="pagoHead1"
+                            data-bs-parent="#accordionPagos">
+                            <div class="accordion-body hnd-accordion-body">
+                                Aceptamos <strong>Visa, Mastercard y American Express</strong>. Pago en una sola
+                                exhibición o en cuotas sin interés (3, 6 o 12 meses) con tarjetas BAC Credomatic y
+                                Ficohsa. Cargo automático al confirmar la reserva; sin retenciones adicionales.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ítem 2 -->
+                    <div class="accordion-item hnd-accordion-item">
+                        <h2 class="accordion-header" id="pagoHead2">
+                            <button class="accordion-button hnd-accordion-btn collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#pagoBody2" aria-expanded="false"
+                                aria-controls="pagoBody2">
+                                🅿️ PayPal
+                            </button>
+                        </h2>
+                        <div id="pagoBody2" class="accordion-collapse collapse" aria-labelledby="pagoHead2"
+                            data-bs-parent="#accordionPagos">
+                            <div class="accordion-body hnd-accordion-body">
+                                Pago seguro vía <strong>PayPal</strong>. Puedes utilizar tu saldo PayPal o cualquier
+                                tarjeta vinculada a tu cuenta. La transacción está protegida por la garantía de
+                                comprador de PayPal. Tipo de cambio aplicado al momento del pago.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ítem 3 -->
+                    <div class="accordion-item hnd-accordion-item">
+                        <h2 class="accordion-header" id="pagoHead3">
+                            <button class="accordion-button hnd-accordion-btn collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#pagoBody3" aria-expanded="false"
+                                aria-controls="pagoBody3">
+                                🏦 Transferencia bancaria
+                            </button>
+                        </h2>
+                        <div id="pagoBody3" class="accordion-collapse collapse" aria-labelledby="pagoHead3"
+                            data-bs-parent="#accordionPagos">
+                            <div class="accordion-body hnd-accordion-body">
+                                Transferencia a cuenta <strong>Banco Atlántida</strong> a nombre de HND Corporación S.A.
+                                Cuenta corriente en USD: 1100-0456-7890. Una vez realizado el depósito, envía el
+                                comprobante a <em>pagos@hnd.hn</em> para confirmar la reserva en menos de 2 horas.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ítem 4 -->
+                    <div class="accordion-item hnd-accordion-item">
+                        <h2 class="accordion-header" id="pagoHead4">
+                            <button class="accordion-button hnd-accordion-btn collapsed" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#pagoBody4" aria-expanded="false"
+                                aria-controls="pagoBody4">
+                                💵 Pago en efectivo / recepción
+                            </button>
+                        </h2>
+                        <div id="pagoBody4" class="accordion-collapse collapse" aria-labelledby="pagoHead4"
+                            data-bs-parent="#accordionPagos">
+                            <div class="accordion-body hnd-accordion-body">
+                                Disponible únicamente al momento del check-in en recepción. Se requiere una
+                                <strong>reserva previa en línea</strong> con tarjeta de garantía (sin cargo). Aceptamos
+                                dólares (USD) y lempiras (HNL) al tipo de cambio oficial del día. No aplicable para
+                                planes Ultra Luxe.
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /accordionPagos -->
+            </div>
+
         </div>
     </section>
 
+    <!-- ══════════════════════════════════════════════════════════
+     COLLAPSE — Componente Bootstrap para mostrar/ocultar info
+     ─────────────────────────────────────────────────────────
+     • Cada botón tiene data-bs-toggle="collapse" y
+       data-bs-target="#ID" que coincide con el id del div
+     • La clase "multi-collapse" permite controlar varios a la vez
+     • area-controls debe ser distinto por cada componente
+══════════════════════════════════════════════════════════ -->
+    <section class="section section-dark" id="info-extra">
+        <div class="container">
+            <div class="section-header section-header-light">
+                <span class="section-tag section-tag-gold">Información Extra</span>
+                <h2 class="section-title" style="color:#fff;">¿Qué <em>incluye</em> tu estadía?</h2>
+                <p class="section-sub" style="color:rgba(255,255,255,0.6);">Haz clic para ver o ocultar los detalles de
+                    cada categoría.</p>
+            </div>
+
+            <!-- Botones que controlan los collapse -->
+            <div class="collapse-btns-row">
+                <button class="btn-collapse-hnd" data-bs-toggle="collapse" data-bs-target="#collapseDesayuno"
+                    aria-expanded="false" aria-controls="collapseDesayuno">
+                    🍳 Desayuno
+                </button>
+                <button class="btn-collapse-hnd" data-bs-toggle="collapse" data-bs-target="#collapseSpa"
+                    aria-expanded="false" aria-controls="collapseSpa">
+                    💆 Spa &amp; Wellness
+                </button>
+                <button class="btn-collapse-hnd" data-bs-toggle="collapse" data-bs-target="#collapseTraslado"
+                    aria-expanded="false" aria-controls="collapseTraslado">
+                    🚗 Traslados
+                </button>
+                <!-- Botón multi-collapse: muestra/oculta TODOS a la vez -->
+                <button class="btn-collapse-hnd btn-collapse-gold" data-bs-toggle="collapse"
+                    data-bs-target=".multi-collapse" aria-expanded="false"
+                    aria-controls="collapseDesayuno collapseSpa collapseTraslado">
+                    ✦ Ver / ocultar todo
+                </button>
+            </div>
+
+            <!-- Panel 1 — id="collapseDesayuno" -->
+            <div class="collapse multi-collapse collapse-panel" id="collapseDesayuno">
+                <div class="collapse-inner">
+                    <h4>🍳 Desayuno buffet incluido</h4>
+                    <p>Todos nuestros planes incluyen desayuno buffet completo con opciones internacionales y regionales
+                        hondureñas. Horario: 6:30 AM – 10:30 AM. En Coral Reef Roatán también ofrecemos desayuno en la
+                        playa bajo previa solicitud al concierge.</p>
+                </div>
+            </div>
+
+            <!-- Panel 2 — id="collapseSpa" -->
+            <div class="collapse multi-collapse collapse-panel" id="collapseSpa">
+                <div class="collapse-inner">
+                    <h4>💆 Spa &amp; Wellness</h4>
+                    <p>El acceso al área de wellness es gratuito para todos los huéspedes. Los tratamientos de spa
+                        tienen costo adicional según menú de servicios. Rituales con productos 100% naturales de
+                        Honduras: aloe, cacao, miel silvestre y aceites esenciales de la Mosquitia.</p>
+                </div>
+            </div>
+
+            <!-- Panel 3 — id="collapseTraslado" -->
+            <div class="collapse multi-collapse collapse-panel" id="collapseTraslado">
+                <div class="collapse-inner">
+                    <h4>🚗 Traslados privados</h4>
+                    <p>Incluidos en planes Executive Plus y Ultra Luxe. Vehículos SUV de lujo con chofer privado desde
+                        los aeropuertos de Tegucigalpa (TON), San Pedro Sula (SAP) y Roatán (RTB). Para el plan
+                        Essential, disponible con cargo adicional de $45 por trayecto.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+     FAQ — Bootstrap Accordion
+     ─────────────────────────────────────────────────────────
+     ESTRUCTURA:
+     • div.accordion con id="accordionFaq" (referencia padre)
+     • Cada ítem: div.accordion-item
+       └─ div.accordion-header > button.accordion-button
+          (con data-bs-toggle="collapse" y data-bs-target="#X")
+       └─ div.accordion-collapse.collapse  ← id="X"
+          └─ div.accordion-body
+     • data-bs-parent="#accordionFaq" hace que solo uno esté
+       abierto a la vez (comportamiento de acordeón)
+     • El primer ítem tiene clase "collapse show" → abierto por defecto
+══════════════════════════════════════════════════════════ -->
     <section class="section section-alt" id="faq">
         <div class="container container-narrow">
             <div class="section-header">
                 <span class="section-tag">Soporte</span>
                 <h2 class="section-title">Preguntas <em>frecuentes</em></h2>
+                <p class="section-sub">Todo lo que necesitas saber antes de reservar.</p>
             </div>
-            <div class="faq-list">
-                <details class="faq-item" open>
-                    <summary class="faq-question"><span>¿Cuál es la política de cancelación?</span><svg
-                            class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg></summary>
-                    <div class="faq-answer">
-                        <p>Ofrecemos cancelación gratuita hasta <strong>48 horas antes</strong> de tu llegada. Para
+
+            <!-- Bootstrap Accordion -->
+            <div class="accordion hnd-accordion" id="accordionFaq">
+
+                <!-- Ítem 1 — abierto por defecto: "collapse show" -->
+                <div class="accordion-item hnd-accordion-item">
+                    <h2 class="accordion-header" id="faqHead1">
+                        <button class="accordion-button hnd-accordion-btn" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#faqBody1" aria-expanded="true" aria-controls="faqBody1">
+                            ¿Cuál es la política de cancelación?
+                        </button>
+                    </h2>
+                    <!-- id="faqBody1" coincide con data-bs-target="#faqBody1" -->
+                    <!-- "collapse show" = abierto por defecto -->
+                    <div id="faqBody1" class="accordion-collapse collapse show" aria-labelledby="faqHead1"
+                        data-bs-parent="#accordionFaq">
+                        <div class="accordion-body hnd-accordion-body">
+                            Ofrecemos cancelación gratuita hasta <strong>48 horas antes</strong> de tu llegada. Para
                             modificaciones después de ese plazo, se aplica un cargo del 50% de la reserva total. Las
-                            reservas del plan Ultra Luxe tienen política extendida de 72 horas.</p>
+                            reservas del plan Ultra Luxe tienen política extendida de 72 horas.
+                        </div>
                     </div>
-                </details>
-                <details class="faq-item">
-                    <summary class="faq-question"><span>¿Qué métodos de pago aceptan?</span><svg class="faq-arrow"
-                            width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg></summary>
-                    <div class="faq-answer">
-                        <p>Aceptamos Visa, Mastercard, American Express, transferencias bancarias y pagos digitales
-                            (PayPal, Stripe). Todos los pagos están protegidos con encriptación SSL de 256 bits.</p>
+                </div>
+
+                <!-- Ítem 2 -->
+                <div class="accordion-item hnd-accordion-item">
+                    <h2 class="accordion-header" id="faqHead2">
+                        <button class="accordion-button hnd-accordion-btn collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#faqBody2" aria-expanded="false"
+                            aria-controls="faqBody2">
+                            ¿Qué métodos de pago aceptan?
+                        </button>
+                    </h2>
+                    <div id="faqBody2" class="accordion-collapse collapse" aria-labelledby="faqHead2"
+                        data-bs-parent="#accordionFaq">
+                        <div class="accordion-body hnd-accordion-body">
+                            Aceptamos Visa, Mastercard, American Express, transferencias bancarias y pagos digitales
+                            (PayPal, Stripe). Todos los pagos están protegidos con encriptación SSL de 256 bits.
+                        </div>
                     </div>
-                </details>
-                <details class="faq-item">
-                    <summary class="faq-question"><span>¿Cuáles son los horarios de check-in y check-out?</span><svg
-                            class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg></summary>
-                    <div class="faq-answer">
-                        <p>Check-in estándar: <strong>3:00 PM</strong>. Check-out: <strong>12:00 PM</strong>. Los planes
-                            Executive Plus y Ultra Luxe incluyen late check-out hasta las 4:00 PM. Early check-in
-                            disponible desde las 10:00 AM sujeto a disponibilidad.</p>
+                </div>
+
+                <!-- Ítem 3 -->
+                <div class="accordion-item hnd-accordion-item">
+                    <h2 class="accordion-header" id="faqHead3">
+                        <button class="accordion-button hnd-accordion-btn collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#faqBody3" aria-expanded="false"
+                            aria-controls="faqBody3">
+                            ¿Cuáles son los horarios de check-in y check-out?
+                        </button>
+                    </h2>
+                    <div id="faqBody3" class="accordion-collapse collapse" aria-labelledby="faqHead3"
+                        data-bs-parent="#accordionFaq">
+                        <div class="accordion-body hnd-accordion-body">
+                            Check-in estándar: <strong>3:00 PM</strong>. Check-out: <strong>12:00 PM</strong>. Los
+                            planes Executive Plus y Ultra Luxe incluyen late check-out hasta las 4:00 PM. Early check-in
+                            disponible desde las 10:00 AM sujeto a disponibilidad.
+                        </div>
                     </div>
-                </details>
-                <details class="faq-item">
-                    <summary class="faq-question"><span>¿Tienen servicio para grupos o eventos corporativos?</span><svg
-                            class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg></summary>
-                    <div class="faq-answer">
-                        <p>Sí, ofrecemos paquetes especiales para grupos de 10+ personas y eventos corporativos. Incluye
-                            salas de reunión equipadas, catering personalizado y coordinador de eventos dedicado.
-                            Contáctanos directamente para cotizaciones grupales.</p>
+                </div>
+
+                <!-- Ítem 4 -->
+                <div class="accordion-item hnd-accordion-item">
+                    <h2 class="accordion-header" id="faqHead4">
+                        <button class="accordion-button hnd-accordion-btn collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#faqBody4" aria-expanded="false"
+                            aria-controls="faqBody4">
+                            ¿Tienen servicio para grupos o eventos corporativos?
+                        </button>
+                    </h2>
+                    <div id="faqBody4" class="accordion-collapse collapse" aria-labelledby="faqHead4"
+                        data-bs-parent="#accordionFaq">
+                        <div class="accordion-body hnd-accordion-body">
+                            Sí, ofrecemos paquetes especiales para grupos de 10+ personas y eventos corporativos.
+                            Incluye salas de reunión equipadas, catering personalizado y coordinador de eventos
+                            dedicado. Contáctanos directamente para cotizaciones grupales.
+                        </div>
                     </div>
-                </details>
-                <details class="faq-item">
-                    <summary class="faq-question"><span>¿Se permiten mascotas?</span><svg class="faq-arrow" width="16"
-                            height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="6 9 12 15 18 9" />
-                        </svg></summary>
-                    <div class="faq-answer">
-                        <p>El Ruinas Heritage acepta mascotas de hasta 15 kg con cargo adicional de $25/noche. El
+                </div>
+
+                <!-- Ítem 5 -->
+                <div class="accordion-item hnd-accordion-item">
+                    <h2 class="accordion-header" id="faqHead5">
+                        <button class="accordion-button hnd-accordion-btn collapsed" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#faqBody5" aria-expanded="false"
+                            aria-controls="faqBody5">
+                            ¿Se permiten mascotas?
+                        </button>
+                    </h2>
+                    <div id="faqBody5" class="accordion-collapse collapse" aria-labelledby="faqHead5"
+                        data-bs-parent="#accordionFaq">
+                        <div class="accordion-body hnd-accordion-body">
+                            El Ruinas Heritage acepta mascotas de hasta 15 kg con cargo adicional de $25/noche. El
                             Executive Sula y Coral Reef Roatán tienen política libre de mascotas para preservar la
-                            tranquilidad de todos los huéspedes.</p>
+                            tranquilidad de todos los huéspedes.
+                        </div>
                     </div>
-                </details>
-            </div>
+                </div>
+
+            </div><!-- /accordion -->
+
             <p class="faq-footer">¿Tienes otra pregunta? <a href="#contacto">Escríbenos directamente →</a></p>
         </div>
     </section>
@@ -821,7 +1128,8 @@
                                         2233-0000</strong></div>
                             </div>
                         </a>
-                        <a href="mailto:concierge@hnd.hn" class="contact-item-link">
+                        <a href="/cdn-cgi/l/email-protection#b4d7dbdad7ddd1c6d3d1f4dcdad09adcda"
+                            class="contact-item-link">
                             <div class="contact-item">
                                 <div class="c-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="2">
@@ -829,8 +1137,10 @@
                                             d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                                         <polyline points="22,6 12,13 2,6" />
                                     </svg></div>
-                                <div><span class="c-label">Correo</span><strong
-                                        class="c-value">concierge@hnd.hn</strong></div>
+                                <div><span class="c-label">Correo</span><strong class="c-value"><span
+                                            class="__cf_email__"
+                                            data-cfemail="d5b6babbb6bcb0a7b2b095bdbbb1fbbdbb">[email&#160;protected]</span></strong>
+                                </div>
                             </div>
                         </a>
                         <div class="contact-item">
@@ -941,7 +1251,117 @@
         </div>
     </footer>
 
-    <!-- MODAL DE RESERVA -->
+    <!-- ══════════════════════════════════════════════════════════
+     MODAL BOOTSTRAP — Opciones de pago
+     • div.modal con id="modalPago" — el id es el disparador
+     • data-bs-toggle="modal" data-bs-target="#modalPago"
+     • .modal-dialog define el tamaño (.modal-lg)
+     • .modal-content contiene header, body y footer
+     • data-bs-dismiss="modal" cierra el modal
+══════════════════════════════════════════════════════════ -->
+    <div class="modal fade" id="modalPago" tabindex="-1" aria-labelledby="modalPagoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content hnd-modal-content">
+
+                <div class="modal-header hnd-modal-header">
+                    <h5 class="modal-title hnd-modal-title" id="modalPagoLabel">💳 Opciones de Pago — HND LUXE</h5>
+                    <button type="button" class="btn-close hnd-btn-close" data-bs-dismiss="modal"
+                        aria-label="Cerrar"></button>
+                </div>
+
+                <div class="modal-body hnd-modal-body">
+                    <p class="modal-intro">Elige tu método de pago preferido. Todas las transacciones están protegidas
+                        con encriptación SSL de 256 bits.</p>
+
+                    <!-- Formulario dentro del modal — como lo muestra el tutorial -->
+                    <form id="pagoForm" onsubmit="handlePagoForm(event)">
+                        <div class="pago-metodos">
+
+                            <label class="pago-opcion">
+                                <input type="radio" name="metodoPago" value="tarjeta" checked>
+                                <div class="pago-card-opt">
+                                    <span class="pago-icon">💳</span>
+                                    <div>
+                                        <strong>Tarjeta crédito / débito</strong>
+                                        <small>Visa · Mastercard · Amex</small>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="pago-opcion">
+                                <input type="radio" name="metodoPago" value="paypal">
+                                <div class="pago-card-opt">
+                                    <span class="pago-icon">🅿️</span>
+                                    <div>
+                                        <strong>PayPal</strong>
+                                        <small>Pago seguro con cuenta o tarjeta</small>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="pago-opcion">
+                                <input type="radio" name="metodoPago" value="transferencia">
+                                <div class="pago-card-opt">
+                                    <span class="pago-icon">🏦</span>
+                                    <div>
+                                        <strong>Transferencia bancaria</strong>
+                                        <small>Banco Atlántida · USD</small>
+                                    </div>
+                                </div>
+                            </label>
+
+                        </div>
+
+                        <!-- Campos del formulario de pago (tarjeta) -->
+                        <div class="pago-form-fields">
+                            <div class="modal-form-row">
+                                <div class="modal-form-field">
+                                    <!-- Tooltip en el label — indica formato esperado -->
+                                    <label>Número de tarjeta
+                                        <span class="tooltip-label" data-bs-toggle="tooltip" data-bs-placement="right"
+                                            title="Ingresa los 16 dígitos sin espacios">ⓘ</span>
+                                    </label>
+                                    <input type="text" placeholder="0000 0000 0000 0000" maxlength="19" id="cardNumber">
+                                </div>
+                                <div class="modal-form-field">
+                                    <label>Nombre en la tarjeta</label>
+                                    <input type="text" placeholder="JUAN A PEREZ" id="cardName">
+                                </div>
+                            </div>
+                            <div class="modal-form-row">
+                                <div class="modal-form-field">
+                                    <label>Vencimiento
+                                        <span class="tooltip-label" data-bs-toggle="tooltip" data-bs-placement="right"
+                                            title="Formato: MM/AA — ejemplo: 08/27">ⓘ</span>
+                                    </label>
+                                    <input type="text" placeholder="MM/AA" maxlength="5" id="cardExp">
+                                </div>
+                                <div class="modal-form-field">
+                                    <label>CVV
+                                        <span class="tooltip-label" data-bs-toggle="tooltip" data-bs-placement="right"
+                                            title="3 dígitos al reverso de tu tarjeta (Amex: 4 dígitos al frente)">ⓘ</span>
+                                    </label>
+                                    <input type="text" placeholder="***" maxlength="4" id="cardCvv">
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="modal-footer hnd-modal-footer">
+                    <span class="modal-seguro">🔒 Pago 100% seguro · Sin cargos ocultos</span>
+                    <button type="button" class="btn-modal-cancel" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn-modal-confirm" onclick="handlePagoForm(event)">
+                        Confirmar pago
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE RESERVA PERSONALIZADO (existente) -->
     <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnBg(event)">
         <div class="modal-box" id="modalBox" role="dialog" aria-modal="true" aria-labelledby="modalHotelName">
             <div class="modal-left" id="modalLeft">
@@ -1057,6 +1477,7 @@
     </div>
 
     <!-- Bootstrap 5 JS — INDISPENSABLE para que funcionen los tabs y pills -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
@@ -1114,7 +1535,34 @@
         function showToast(title, msg, type = 'success') { clearTimeout(toastTimer); const t = document.getElementById('toast'); document.getElementById('toast-title').textContent = title; document.getElementById('toast-msg').textContent = msg; t.className = 'toast-custom toast-' + type + ' show'; toastTimer = setTimeout(() => t.classList.remove('show'), 4500); }
         function closeToast() { document.getElementById('toast').classList.remove('show'); }
 
-        window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60));
+        // ════════════════════════════════════════
+        // BOOTSTRAP: Tooltips + Popovers
+        // Requieren inicialización manual en BS5
+        // ════════════════════════════════════════
+        document.addEventListener('DOMContentLoaded', () => {
+            // Activar todos los tooltips de la página
+            document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+                new bootstrap.Tooltip(el);
+            });
+            // Activar todos los popovers de la página
+            document.querySelectorAll('[data-bs-toggle="popover"]').forEach(el => {
+                new bootstrap.Popover(el);
+            });
+        });
+
+        // Modal Bootstrap de pago
+        function handlePagoForm(e) {
+            if (e) e.preventDefault();
+            const metodo = document.querySelector('input[name="metodoPago"]:checked');
+            const nombre = metodo ? metodo.value : 'tarjeta';
+            const nombres = { tarjeta: 'Tarjeta de crédito', paypal: 'PayPal', transferencia: 'Transferencia bancaria' };
+            // Cerrar modal Bootstrap
+            const bsModal = bootstrap.Modal.getInstance(document.getElementById('modalPago'));
+            if (bsModal) bsModal.hide();
+            showToast('¡Pago registrado!', `Método seleccionado: ${nombres[nombre]}.`, 'success');
+        }
+
+
         document.getElementById('navToggle').addEventListener('click', function () { const l = document.getElementById('navLinks'), o = l.classList.toggle('open'); this.classList.toggle('open', o); });
         document.querySelectorAll('.nav-link').forEach(lk => lk.addEventListener('click', () => { document.getElementById('navLinks').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); }));
         const sections = document.querySelectorAll('section[id]');
