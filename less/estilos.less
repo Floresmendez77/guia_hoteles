@@ -1,0 +1,236 @@
+// ================================================================
+// HND LUXE — less/estilos.less
+// Proyecto: guia_hoteles
+//
+// Variables Less, mixins y operaciones matemáticas
+// ================================================================
+
+// ── VARIABLES ────────────────────────────────────────────────────
+@azul-navbar:       #1a3c5e;
+@azul-dark:         #0f1923;
+@azul-mid:          #163351;
+@dorado-estrellas:  #c9a96e;
+@dorado-claro:      #e0c99a;
+@blanco:            #f5f0e8;
+@gris-fondo:        #f0ebe0;
+@texto-dark:        #1a1a2e;
+
+// Tipografía
+@font-display: 'Playfair Display', serif;
+@font-body:    'Cormorant Garamond', serif;
+@font-ui:      'Montserrat', sans-serif;
+
+// Operación matemática — sistema de columnas base
+@grid-columns:  12;
+@grid-gutter:   30px;
+@container-max: 1200px;
+
+@col-width:      (@container-max - (@grid-gutter * (@grid-columns - 1))) / @grid-columns;
+@col-half:       @col-width * 2 + @grid-gutter;
+@col-third:      @col-width * 3 + @grid-gutter * 2;
+@col-quarter:    @col-width * 4 + @grid-gutter * 3;
+
+// Transición
+@transition-speed: 0.35s;
+@transition-ease:  cubic-bezier(0.4, 0, 0.2, 1);
+@transition:       @transition-speed @transition-ease;
+
+// Sombras
+@sombra-suave:   0 8px 40px rgba(0, 0, 0, 0.10);
+@sombra-media:   0 16px 60px rgba(0, 0, 0, 0.15);
+@sombra-fuerte:  0 24px 80px rgba(0, 0, 0, 0.20);
+
+// ── MIXIN: .formato-imagen() ──────────────────────────────────────
+// Aplica estilos estándar de imagen para tarjetas y galerías
+.formato-imagen(
+  @alto:       220px;
+  @ajuste:     cover;
+  @posicion:   center;
+  @transicion: 0.5s ease
+) {
+  width: 100%;
+  height: @alto;
+  object-fit: @ajuste;
+  object-position: @posicion;
+  display: block;
+  transition: transform @transicion;
+}
+
+// Alias sin parámetros (uso directo)
+.formato-imagen-default() {
+  .formato-imagen();
+}
+
+// Formato para hero (altura completa)
+.formato-imagen-hero() {
+  .formato-imagen(100vh, cover, center top);
+}
+
+// Formato para galería (aspecto cuadrado)
+.formato-imagen-galeria() {
+  .formato-imagen(260px, cover, center, 0.5s ease);
+}
+
+// ── MIXIN: .flex-center() ─────────────────────────────────────────
+.flex-center(@direction: row) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: @direction;
+}
+
+// ── MIXIN: .texto-luxe() ──────────────────────────────────────────
+// Texto estilo marca HND LUXE
+.texto-luxe(@size: 0.72rem; @spacing: 0.15em) {
+  font-family: @font-ui;
+  font-size: @size;
+  letter-spacing: @spacing;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+// ── MIXIN: .borde-dorado() ────────────────────────────────────────
+.borde-dorado(@grosor: 3px) {
+  border-left: @grosor solid @dorado-estrellas;
+  padding-left: 1rem;
+}
+
+// ── MIXIN: .tarjeta-base() ────────────────────────────────────────
+.tarjeta-base(@bg: #fff; @padding: 1.5rem) {
+  background: @bg;
+  padding: @padding;
+  box-shadow: @sombra-suave;
+  transition: transform @transition, box-shadow @transition;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: @sombra-media;
+  }
+}
+
+// ── MIXIN: .seccion-oscura() ──────────────────────────────────────
+.seccion-oscura(@padding-y: 7rem) {
+  background: @azul-dark;
+  padding: ~"@{padding-y}" 0;
+  color: @blanco;
+}
+
+// ── MIXIN: .seccion-clara() ───────────────────────────────────────
+.seccion-clara(@padding-y: 7rem) {
+  background: @gris-fondo;
+  padding: ~"@{padding-y}" 0;
+  color: @texto-dark;
+}
+
+// ================================================================
+// ESTILOS ADICIONALES LESS
+// ================================================================
+
+// Navbar
+.navbar-less {
+  background: @azul-navbar;
+  border-bottom: 1px solid fade(@dorado-estrellas, 20%);
+
+  .nav-link {
+    .texto-luxe();
+    color: fade(@blanco, 75%);
+
+    &:hover {
+      color: @dorado-estrellas;
+    }
+  }
+}
+
+// Estrellas de calificación
+.estrellas-rating {
+  color: @dorado-estrellas;
+  font-size: 0.9rem;
+
+  &--grande { font-size: 1.2rem; }
+  &--pequeno { font-size: 0.75rem; }
+}
+
+// Badge precio
+.precio-badge {
+  background: @dorado-estrellas;
+  color: @azul-dark;
+  font-family: @font-ui;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.3em 0.8em;
+  border-radius: 2px;
+}
+
+// Imagen de hotel (usa mixin)
+.hotel-imagen {
+  .formato-imagen(220px);
+
+  .hotel-card:hover & {
+    transform: scale(1.04);
+  }
+}
+
+// Hero imagen
+.hero-imagen {
+  .formato-imagen-hero();
+}
+
+// Imagen de galería
+.galeria-imagen {
+  .formato-imagen-galeria();
+}
+
+// Separador dorado calculado con operación matemática
+@separador-width:   60px;
+@separador-margin:  (@separador-width * 2);   // 120px — operación Less
+
+.separador-dorado {
+  width: @separador-width;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, @dorado-estrellas, transparent);
+  margin: 1.2rem auto 0;
+
+  // versión amplia
+  &--grande {
+    width: @separador-margin;  // 120px
+  }
+}
+
+// Layout de tarjetas calculado
+@tarjeta-gap:    2rem;
+@tarjetas-por-fila: 3;
+
+.tarjetas-grid {
+  display: grid;
+  grid-template-columns: repeat(@tarjetas-por-fila, 1fr);
+  gap: @tarjeta-gap;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Colores de feedback (operación: dorado mezclado con estados)
+@color-exito:       mix(@dorado-estrellas, #22c55e, 30%);
+@color-advertencia: mix(@dorado-estrellas, #f59e0b, 50%);
+@color-error:       mix(@azul-navbar, #ef4444, 20%);
+
+.estado {
+  &-exito   { color: @color-exito; }
+  &-aviso   { color: @color-advertencia; }
+  &-error   { color: @color-error; }
+}
+
+// Opacidades calculadas
+@opacidad-alta:   fade(@blanco, 90%);
+@opacidad-media:  fade(@blanco, 60%);
+@opacidad-baja:   fade(@blanco, 35%);
+
+.texto-alta    { color: @opacidad-alta; }
+.texto-media   { color: @opacidad-media; }
+.texto-baja    { color: @opacidad-baja; }

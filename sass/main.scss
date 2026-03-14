@@ -1,0 +1,1161 @@
+// ================================================================
+// HND LUXE — sass/main.scss
+// Proyecto: guia_hoteles
+//
+// Incluye variables, mixins, nesting BEM y media queries
+// originales + estilos para las 10 secciones nuevas.
+// ================================================================
+
+// ── IMPORTAR GOOGLE FONTS (referencia) ──────────────────────────
+// @import url('https://fonts.googleapis.com/css2?family=Playfair+Display...');
+
+// ================================================================
+// VARIABLES ORIGINALES
+// ================================================================
+$color-primario:   #1a3c5e;
+$color-secundario: #c9a96e;
+$color-dark:       #0f1923;
+$color-mid:        #163351;
+$color-claro:      #f5f0e8;
+$color-gris-lt:    #f0ebe0;
+$color-texto:      #1a1a2e;
+
+// Tipografía
+$ff-display: 'Playfair Display', serif;
+$ff-body:    'Cormorant Garamond', serif;
+$ff-ui:      'Montserrat', sans-serif;
+
+// Espaciado
+$espaciado-base: 1rem;
+$espaciado-lg:   2rem;
+$espaciado-xl:   4rem;
+
+// Transición
+$transition-base: .35s cubic-bezier(.4, 0, .2, 1);
+
+// ================================================================
+// MIXINS ORIGINALES
+// ================================================================
+
+// flex-center — centrar con flexbox
+@mixin flex-center($direction: row) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+}
+
+// sombra-suave — sombra difusa con color configurable
+@mixin sombra-suave($color: rgba(0, 0, 0, .12), $y: 8px, $blur: 40px) {
+  box-shadow: 0 #{$y} #{$blur} $color;
+}
+
+// btn-estilo — botón de marca HND LUXE
+@mixin btn-estilo(
+  $bg:     transparent,
+  $color:  $color-secundario,
+  $border: $color-secundario
+) {
+  font-family: $ff-ui;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  padding: .75rem 2rem;
+  border: 1px solid $border;
+  background: $bg;
+  color: $color;
+  transition: $transition-base;
+  border-radius: 0;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: $border;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform $transition-base;
+    z-index: -1;
+  }
+
+  &:hover {
+    color: $color-dark;
+
+    &::before {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+}
+
+// btn-estilo-filled — variante rellena
+@mixin btn-estilo-filled($bg: $color-secundario, $color: $color-dark) {
+  @include btn-estilo($bg: $bg, $color: $color, $border: $bg);
+
+  &::before { background: lighten($bg, 10%); }
+  &:hover { color: $color; }
+}
+
+// seccion-dark — sección oscura estándar
+@mixin seccion-dark($padding-y: 7rem) {
+  background: $color-dark;
+  padding: #{$padding-y} 0;
+  color: $color-claro;
+}
+
+// seccion-clara — sección clara alternada
+@mixin seccion-clara($padding-y: 7rem) {
+  background: $color-gris-lt;
+  padding: #{$padding-y} 0;
+  color: $color-texto;
+}
+
+// borde-dorado — borde izquierdo decorativo
+@mixin borde-dorado($grosor: 3px) {
+  border-left: #{$grosor} solid $color-secundario;
+  padding-left: 1rem;
+}
+
+// ================================================================
+// ESTILOS BASE
+// ================================================================
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $ff-body;
+  background: $color-dark;
+  color: $color-claro;
+  overflow-x: hidden;
+
+  // Scrollbar personalizada
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $color-dark;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $color-secundario;
+    border-radius: 3px;
+  }
+}
+
+// ================================================================
+// TIPOGRAFÍA HELPERS
+// ================================================================
+.section-eyebrow {
+  font-family: $ff-ui;
+  font-size: .72rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: $color-secundario;
+  display: block;
+  margin-bottom: .5rem;
+}
+
+.section-title {
+  font-family: $ff-display;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+
+  .accent {
+    color: $color-secundario;
+  }
+}
+
+.gold-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, $color-secundario, transparent);
+  margin: 1.2rem auto 0;
+}
+
+// ================================================================
+// BEM: .hotel-card
+// ================================================================
+.hotel-card {
+  background: #fff;
+  @include sombra-suave(rgba($color-primario, .1), 8px, 40px);
+  transition: transform $transition-base, box-shadow $transition-base;
+  overflow: hidden;
+  border: none;
+
+  &:hover {
+    transform: translateY(-6px);
+    @include sombra-suave(rgba($color-primario, .18), 20px, 60px);
+  }
+
+  &__img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s ease;
+  }
+
+  &:hover &__img {
+    transform: scale(1.04);
+  }
+
+  &__body {
+    padding: 1.5rem;
+  }
+
+  &__title {
+    font-family: $ff-display;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: $color-texto;
+    margin-bottom: .4rem;
+  }
+
+  &__stars {
+    color: $color-secundario;
+    font-size: .9rem;
+    margin-bottom: .75rem;
+  }
+
+  &__desc {
+    font-size: .95rem;
+    color: #555;
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+  }
+
+  &__btn {
+    @include btn-estilo-filled($color-primario, #fff);
+    width: 100%;
+
+    &:hover {
+      background: $color-secundario;
+      border-color: $color-secundario;
+      color: $color-dark;
+    }
+  }
+}
+
+// ================================================================
+// NAVBAR
+// ================================================================
+#navbar-principal {
+  background: rgba(15, 25, 35, .97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba($color-secundario, .2);
+  padding: .85rem 0;
+  transition: $transition-base;
+
+  .navbar-brand {
+    font-family: $ff-display;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $color-claro !important;
+    letter-spacing: .05em;
+
+    .brand-accent {
+      color: $color-secundario;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      font-family: $ff-ui;
+      font-size: .72rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba($color-claro, .75) !important;
+      padding: .5rem 1rem !important;
+      transition: color $transition-base;
+
+      &:hover,
+      &.active {
+        color: $color-secundario !important;
+      }
+    }
+  }
+}
+
+// ================================================================
+// HERO
+// ================================================================
+#hero {
+  min-height: 100vh;
+  position: relative;
+  @include flex-center(column);
+  overflow: hidden;
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    animation: heroZoom 18s ease-in-out infinite alternate;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-family: $ff-display;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: $color-claro;
+
+    em {
+      font-style: italic;
+      color: $color-secundario;
+      display: block;
+    }
+  }
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1.05); }
+  to   { transform: scale(1.12); }
+}
+
+// ================================================================
+// SECCIÓN HOTELES
+// ================================================================
+#seccion-hoteles {
+  @include seccion-clara;
+
+  .section-title { color: $color-texto; }
+  .section-eyebrow { color: $color-primario; }
+}
+
+#hoteles-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+// ================================================================
+// SECCIÓN SERVICIOS (nueva)
+// ================================================================
+#servicios {
+  @include seccion-dark;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 80% 50%, rgba($color-primario, .35) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 50% at 20% 80%, rgba($color-secundario, .04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .servicio-item {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    border: 1px solid rgba($color-secundario, .12);
+    transition: border-color $transition-base, background $transition-base, transform $transition-base;
+    position: relative;
+    z-index: 1;
+
+    &:hover {
+      border-color: rgba($color-secundario, .45);
+      background: rgba($color-primario, .25);
+      transform: translateY(-4px);
+    }
+  }
+
+  .servicio-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1.4rem;
+    color: $color-secundario;
+  }
+
+  .servicio-titulo {
+    font-family: $ff-display;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $color-claro;
+    margin-bottom: .6rem;
+  }
+
+  .servicio-desc {
+    font-size: .9rem;
+    color: rgba($color-claro, .6);
+    line-height: 1.7;
+    font-family: $ff-ui;
+  }
+}
+
+// ================================================================
+// SECCIÓN PRECIOS (nueva)
+// ================================================================
+#precios {
+  @include seccion-clara;
+
+  .section-title { color: $color-texto; }
+  .section-eyebrow { color: $color-primario; }
+
+  .precio-card {
+    background: #fff;
+    border: 1px solid rgba($color-primario, .1);
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    transition: transform $transition-base, box-shadow $transition-base;
+
+    &:hover {
+      transform: translateY(-8px);
+      @include sombra-suave(rgba($color-primario, .15), 30px, 70px);
+    }
+
+    &.featured {
+      background: $color-primario;
+      border-color: $color-secundario;
+      color: $color-claro;
+
+      .plan-name { color: $color-secundario; }
+      .plan-price,
+      .plan-period { color: $color-claro; }
+      .plan-feature { border-color: rgba(#fff, .1); color: $color-claro; }
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .plan-name {
+      font-family: $ff-ui;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: $color-primario;
+      margin-bottom: 1.5rem;
+    }
+
+    .plan-price {
+      font-family: $ff-display;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: $color-texto;
+      line-height: 1;
+
+      sup { font-size: 1.5rem; vertical-align: super; }
+    }
+
+    .plan-period {
+      font-family: $ff-ui;
+      font-size: .75rem;
+      color: #777;
+      margin-bottom: 2rem;
+    }
+
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem;
+      text-align: left;
+    }
+
+    .plan-feature {
+      font-family: $ff-ui;
+      font-size: .82rem;
+      color: #444;
+      padding: .55rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, .06);
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+
+      i { color: $color-secundario; flex-shrink: 0; }
+    }
+  }
+}
+
+// ================================================================
+// ACCORDION PAGOS (nueva)
+// ================================================================
+#pagos {
+  @include seccion-dark(6rem);
+
+  .accordion-item {
+    background: rgba(#fff, .04);
+    border: 1px solid rgba($color-secundario, .15);
+    margin-bottom: .75rem;
+    border-radius: 0 !important;
+  }
+
+  .accordion-button {
+    background: transparent;
+    color: $color-claro;
+    font-family: $ff-ui;
+    font-size: .85rem;
+    letter-spacing: .08em;
+    font-weight: 500;
+    box-shadow: none;
+    gap: 1rem;
+
+    &:not(.collapsed) {
+      background: rgba($color-secundario, .1);
+      color: $color-secundario;
+    }
+
+    &::after {
+      filter: invert(1) sepia(1) saturate(3) hue-rotate(5deg);
+    }
+  }
+
+  .accordion-body {
+    background: transparent;
+    color: rgba($color-claro, .7);
+    font-family: $ff-ui;
+    font-size: .85rem;
+    line-height: 1.8;
+    border-top: 1px solid rgba($color-secundario, .1);
+  }
+
+  .pago-icon {
+    color: $color-secundario;
+    font-size: 1.4rem;
+  }
+}
+
+// ================================================================
+// INFO EXTRA — collapses (nueva)
+// ================================================================
+#info-extra {
+  background: $color-mid;
+  padding: 6rem 0;
+
+  .collapse-panel {
+    background: rgba(#fff, .05);
+    border: 1px solid rgba($color-secundario, .15);
+    padding: 1.5rem;
+    margin-top: 1rem;
+
+    p {
+      font-family: $ff-ui;
+      font-size: .85rem;
+      color: rgba($color-claro, .75);
+      margin: 0;
+      line-height: 1.8;
+    }
+  }
+
+  .btn-info-collapse {
+    @include btn-estilo;
+    padding: .65rem 1.4rem;
+
+    &:hover,
+    &[aria-expanded="true"] {
+      background: $color-secundario;
+      color: $color-dark;
+    }
+  }
+
+  .btn-multi {
+    @include btn-estilo-filled;
+    padding: .65rem 1.6rem;
+  }
+}
+
+// ================================================================
+// FAQ ACCORDION (nueva)
+// ================================================================
+#faq {
+  @include seccion-clara;
+
+  .section-title { color: $color-texto; }
+  .section-eyebrow { color: $color-primario; }
+
+  .accordion-item {
+    background: #fff;
+    border: 1px solid rgba($color-primario, .1);
+    margin-bottom: .75rem;
+    border-radius: 0 !important;
+  }
+
+  .accordion-button {
+    background: #fff;
+    color: $color-texto;
+    font-family: $ff-display;
+    font-size: 1.05rem;
+    font-weight: 600;
+    box-shadow: none;
+
+    &:not(.collapsed) {
+      background: $color-primario;
+      color: $color-claro;
+
+      &::after { filter: invert(1); }
+    }
+  }
+
+  .accordion-body {
+    font-family: $ff-ui;
+    font-size: .88rem;
+    color: #555;
+    line-height: 1.9;
+    border-top: 2px solid $color-secundario;
+  }
+}
+
+// ================================================================
+// CONTACTO (nueva)
+// ================================================================
+#contacto {
+  @include seccion-dark;
+
+  .contacto-info {
+    padding-right: 3rem;
+
+    h3 {
+      font-family: $ff-display;
+      font-size: 1.6rem;
+      color: $color-secundario;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .contacto-dato {
+    @include flex-center;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    justify-content: flex-start;
+
+    i {
+      color: $color-secundario;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: .15rem;
+    }
+
+    .dato-label {
+      font-family: $ff-ui;
+      font-size: .65rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: $color-secundario;
+      display: block;
+      margin-bottom: .2rem;
+    }
+
+    .dato-val {
+      font-family: $ff-ui;
+      font-size: .88rem;
+      color: rgba($color-claro, .8);
+    }
+  }
+
+  .form-luxe {
+    background: rgba(#fff, .04);
+    border: 1px solid rgba($color-secundario, .15);
+    padding: 2.5rem;
+
+    .form-label {
+      font-family: $ff-ui;
+      font-size: .72rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: $color-secundario;
+      margin-bottom: .4rem;
+    }
+
+    .form-control,
+    .form-select {
+      background: rgba(#fff, .06);
+      border: 1px solid rgba($color-secundario, .2);
+      color: $color-claro;
+      border-radius: 0;
+      font-family: $ff-ui;
+      font-size: .85rem;
+      padding: .75rem 1rem;
+      transition: border-color $transition-base;
+
+      &:focus {
+        background: rgba(#fff, .08);
+        border-color: $color-secundario;
+        box-shadow: 0 0 0 3px rgba($color-secundario, .12);
+        color: $color-claro;
+      }
+
+      &::placeholder {
+        color: rgba($color-claro, .35);
+      }
+
+      option { background: $color-dark; color: $color-claro; }
+    }
+  }
+}
+
+// ================================================================
+// GALERÍA TABS + PILLS (nueva)
+// ================================================================
+#galeria {
+  @include seccion-dark;
+
+  .galeria-section-title {
+    font-family: $ff-ui;
+    font-size: .68rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: $color-secundario;
+    margin-bottom: 1rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid rgba($color-secundario, .2);
+  }
+
+  // Tabs por destino
+  .nav-tabs {
+    border-bottom: 1px solid rgba($color-secundario, .2);
+    gap: .25rem;
+    margin-bottom: 2.5rem;
+
+    .nav-link {
+      font-family: $ff-ui;
+      font-size: .72rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba($color-claro, .5);
+      background: transparent;
+      border: 1px solid transparent;
+      border-bottom: none;
+      padding: .75rem 1.5rem;
+      border-radius: 0;
+      transition: $transition-base;
+
+      &:hover { color: $color-secundario; }
+
+      &.active {
+        background: rgba($color-secundario, .1);
+        color: $color-secundario;
+        border-color: rgba($color-secundario, .25);
+        border-bottom-color: transparent;
+      }
+    }
+  }
+
+  // Pills por experiencia
+  .nav-pills {
+    gap: .5rem;
+    margin-bottom: 2rem;
+
+    .nav-link {
+      font-family: $ff-ui;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba($color-claro, .6);
+      background: rgba(#fff, .04);
+      border: 1px solid rgba($color-secundario, .15);
+      border-radius: 0;
+      padding: .55rem 1.3rem;
+      transition: $transition-base;
+
+      &.active,
+      &:hover {
+        background: $color-secundario;
+        color: $color-dark;
+        border-color: $color-secundario;
+      }
+    }
+  }
+
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .galeria-img {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    &:hover img { transform: scale(1.06); }
+
+    .img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba($color-dark, .8) 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity $transition-base;
+    }
+
+    &:hover .img-overlay { opacity: 1; }
+
+    .img-caption {
+      font-family: $ff-ui;
+      font-size: .75rem;
+      letter-spacing: .1em;
+      color: $color-claro;
+      text-transform: uppercase;
+    }
+  }
+}
+
+// ================================================================
+// TOAST
+// ================================================================
+.toast-luxe {
+  background: $color-primario;
+  border: 1px solid $color-secundario;
+  border-radius: 0;
+  min-width: 320px;
+
+  .toast-header {
+    background: $color-secundario;
+    color: $color-dark;
+    font-family: $ff-ui;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    border-radius: 0;
+    border-bottom: none;
+  }
+
+  .toast-body {
+    font-family: $ff-ui;
+    font-size: .85rem;
+    color: $color-claro;
+    padding: 1rem 1.25rem;
+  }
+}
+
+// ================================================================
+// MODAL RESERVA — 3 pasos
+// ================================================================
+#modalReserva {
+
+  .modal-content {
+    background: $color-dark;
+    border: 1px solid rgba($color-secundario, .25);
+    border-radius: 0;
+    color: $color-claro;
+  }
+
+  .modal-header {
+    background: $color-primario;
+    border-bottom: 1px solid rgba($color-secundario, .2);
+    padding: 1.5rem 2rem;
+  }
+
+  .modal-title {
+    font-family: $ff-display;
+    font-size: 1.4rem;
+    color: $color-claro;
+  }
+
+  .modal-body {
+    padding: 2rem;
+  }
+
+  .modal-footer {
+    background: rgba(#fff, .03);
+    border-top: 1px solid rgba($color-secundario, .15);
+    padding: 1.25rem 2rem;
+  }
+
+  // Indicador de progreso
+  .paso-indicator {
+    @include flex-center;
+    gap: 0;
+    margin-bottom: 2.5rem;
+  }
+
+  .paso-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba($color-secundario, .3);
+    @include flex-center;
+    font-family: $ff-ui;
+    font-size: .75rem;
+    font-weight: 700;
+    color: rgba($color-claro, .4);
+    transition: $transition-base;
+    position: relative;
+    z-index: 1;
+    background: $color-dark;
+
+    &.activo {
+      border-color: $color-secundario;
+      background: $color-secundario;
+      color: $color-dark;
+    }
+
+    &.completado {
+      border-color: $color-secundario;
+      background: transparent;
+      color: $color-secundario;
+    }
+  }
+
+  .paso-linea {
+    height: 2px;
+    flex: 1;
+    background: rgba($color-secundario, .2);
+    transition: background $transition-base;
+
+    &.completada { background: $color-secundario; }
+  }
+
+  .paso-label {
+    font-family: $ff-ui;
+    font-size: .62rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: rgba($color-claro, .4);
+    display: block;
+    text-align: center;
+    margin-top: .4rem;
+
+    &.activo { color: $color-secundario; }
+  }
+
+  // Formulario dentro del modal
+  .form-label {
+    font-family: $ff-ui;
+    font-size: .72rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: $color-secundario;
+    margin-bottom: .4rem;
+  }
+
+  .form-control,
+  .form-select {
+    background: rgba(#fff, .06);
+    border: 1px solid rgba($color-secundario, .2);
+    color: $color-claro;
+    border-radius: 0;
+    font-family: $ff-ui;
+    font-size: .85rem;
+
+    &:focus {
+      background: rgba(#fff, .09);
+      border-color: $color-secundario;
+      box-shadow: 0 0 0 3px rgba($color-secundario, .12);
+      color: $color-claro;
+    }
+
+    &::placeholder { color: rgba($color-claro, .3); }
+    option { background: $color-dark; }
+  }
+
+  // Resumen
+  .resumen-linea {
+    display: flex;
+    justify-content: space-between;
+    font-family: $ff-ui;
+    font-size: .85rem;
+    padding: .6rem 0;
+    border-bottom: 1px solid rgba($color-secundario, .1);
+    color: rgba($color-claro, .8);
+
+    &.total {
+      font-weight: 700;
+      font-size: 1rem;
+      color: $color-secundario;
+      border-bottom: none;
+      padding-top: 1rem;
+    }
+  }
+
+  .promo-applied {
+    font-family: $ff-ui;
+    font-size: .78rem;
+    color: #4ade80;
+    display: none;
+    gap: .5rem;
+    align-items: center;
+
+    &.show { display: flex; }
+  }
+}
+
+// ================================================================
+// MODAL LOG DE EVENTOS (original)
+// ================================================================
+#modalEventos {
+  .modal-content {
+    background: $color-dark;
+    border: 1px solid rgba($color-secundario, .25);
+    color: $color-claro;
+  }
+
+  .modal-header {
+    background: $color-primario;
+    border-bottom: 1px solid rgba($color-secundario, .2);
+  }
+
+  .modal-title {
+    font-family: $ff-display;
+    font-size: 1.2rem;
+  }
+
+  #log-eventos {
+    background: rgba(0, 0, 0, .3);
+    border: 1px solid rgba($color-secundario, .15);
+    padding: 1rem;
+    min-height: 120px;
+    font-size: .8rem;
+    color: $color-secundario;
+  }
+}
+
+// ================================================================
+// FOOTER
+// ================================================================
+#footer {
+  background: #080e14;
+  border-top: 1px solid rgba($color-secundario, .15);
+  padding: 3rem 0;
+
+  .footer-brand {
+    font-family: $ff-display;
+    font-size: 1.6rem;
+    color: $color-claro;
+
+    span { color: $color-secundario; }
+  }
+
+  p {
+    font-family: $ff-ui;
+    font-size: .8rem;
+    color: rgba($color-claro, .4);
+  }
+
+  .footer-links {
+    a {
+      font-family: $ff-ui;
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba($color-claro, .5);
+      text-decoration: none;
+      transition: color $transition-base;
+      margin: 0 .75rem;
+
+      &:hover { color: $color-secundario; }
+    }
+  }
+
+  .footer-copy {
+    font-family: $ff-ui;
+    font-size: .72rem;
+    color: rgba($color-claro, .25);
+    border-top: 1px solid rgba($color-secundario, .08);
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+  }
+}
+
+// ================================================================
+// MEDIA QUERIES
+// ================================================================
+
+// Tablet
+@media (max-width: 992px) {
+  #hoteles-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #servicios .servicio-item {
+    padding: 2rem 1.25rem;
+  }
+
+  #precios .precio-card {
+    padding: 2.5rem 1.5rem;
+  }
+
+  #contacto .contacto-info {
+    padding-right: 0;
+    padding-bottom: 2.5rem;
+  }
+}
+
+// Móvil grande
+@media (max-width: 768px) {
+  #hoteles-container {
+    grid-template-columns: 1fr;
+  }
+
+  #galeria .galeria-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  #modalReserva .paso-label {
+    display: none;
+  }
+
+  #modalReserva .modal-body {
+    padding: 1.5rem;
+  }
+
+  #contacto .form-luxe {
+    padding: 1.5rem;
+  }
+
+  .precio-card {
+    margin-bottom: 1rem;
+  }
+}
+
+// Móvil pequeño
+@media (max-width: 480px) {
+  #galeria .galeria-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+  }
+
+  #pagos .accordion-button {
+    font-size: .78rem;
+  }
+
+  .toast-luxe {
+    min-width: 280px;
+  }
+}

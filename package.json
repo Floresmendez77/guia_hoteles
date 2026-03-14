@@ -1,10 +1,12 @@
 {
   "name": "guia_hoteles",
   "version": "1.0.0",
-  "description": "**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**",
-  "main": "index.js",
+  "description": "Proyecto de estudio: Bootstrap 5 · jQuery · Sass · LESS",
+  "main": "index.html",
   "scripts": {
     "start": "lite-server",
+    "sass": "sass --watch sass/main.scss:css/styles.css",
+    "less": "lessc less/estilos.less css/styles.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,12 +21,12 @@
   },
   "homepage": "https://github.com/Floresmendez77/guia_hoteles#readme",
   "dependencies": {
-    "bootstrap": "^4.0.0",
-    "jquery": "^3.7.1",
-    "open-iconic": "^1.1.1",
-    "popper.js": "^1.16.1"
+    "bootstrap": "^5.3.3",
+    "jquery": "^3.7.1"
   },
   "devDependencies": {
-    "lite-server": "^2.6.1"
+    "lite-server": "^2.6.1",
+    "sass": "^1.77.0",
+    "less": "^4.2.0"
   }
 }
